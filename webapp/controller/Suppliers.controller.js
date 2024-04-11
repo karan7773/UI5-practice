@@ -1,0 +1,242 @@
+sap.ui.define([
+    "sap/ui/core/mvc/Controller",
+    "sap/m/MessageToast",
+    "sap/ui/core/Fragment",
+    "sap/ui/model/Filter",
+    "sap/ui/model/FilterOperator",
+    "ns/buinessparter/model/formatter"
+],
+    /**
+     * @param {typeof sap.ui.core.mvc.Controller} Controller
+     */
+    function (Controller,MessageToast,Fragment,Filter,FilterOperator,formatter) {
+        "use strict";
+
+        return Controller.extend("ns.buinessparter.controller.Suppliers", {
+            formatter: formatter,
+            onInit: function () {
+            },
+            onShowHello() {
+                MessageToast.show("Manage Activity is Pressed");
+            },
+            handleLiveChange:function(oevent){
+                console.log(oevent);
+                console.log(oevent.mParameters.value);
+                console.log(oevent.getParameters("value"));
+                var val=this.getView().byId("i3").getValue();
+                // console.log(val);
+            },
+            onPress: function (evt) {
+                MessageToast.show("Product cost!");
+            },
+            getP:function(){
+                var data=this.getView().byId("Col1").getValue();
+                console.log(data);
+            },
+            onpress_Toggle:function(oevent){
+                if(oevent.getSource().getPressed()){
+                    MessageToast.show("pressed")
+                }else{
+                    MessageToast.show("Unpressed")
+                }
+                var btn=this.getView().byId("t_btn")
+                if(btn.getText()==="Light"){
+                    btn.setText("Dark")
+                }else{
+                    btn.setText("Light")
+                }
+            },
+            onButtonClick: function() {
+                // this.byId("myButton").setVisible(false);
+                var btn=this.byId("myButton");
+                btn.setProperty("visible",false);
+
+                this.byId("myInputField").setVisible(true);
+                this.byId("myInputField_b").setVisible(true);
+            },
+            Submit_btn:function(){
+                var oButton = this.byId("myButton");
+                var oInput = this.byId("myInputField");
+                
+                oButton.setText(oInput.getValue())
+                oButton.setVisible(true);
+                oInput.setVisible(false);
+                this.byId("myInputField_b").setVisible(false);
+            },
+            btn_img:function(oevent){
+                var img=this.getView().byId("img")
+                if(oevent.getSource().getPressed()){
+                    img.setVisible(true)
+                }else{
+                    img.setVisible(false)
+                }
+            },
+            handleOpen: function () {
+                var oDialog = this.byId("helloDialog");
+                oDialog.open();
+            },
+            handleClose:function(){
+                var oDialog=this.byId("helloDialog")
+                oDialog.close()
+            },
+            openBarcodeScannerDialog:function(){
+                this.byId("bsd").show();
+            },
+            handleScanError: function(oEvent) {
+                this.byId("scanResultLabel").setText("Error result: " + oEvent.getParameter("message"));
+                this.byId("bsd").close();
+            },
+            handleScanSuccess: function(oEvent) {
+                this.byId("scanResultLabel").setText("Success result: " + oEvent.getParameter("text"));
+                this.byId("bsd").close();
+            },
+            // openDialogFragments(){
+            //     if(!this.isDialog){
+            //         this.isDialog=this.loadFragment({
+            //             id:this.byId(),
+            //             name:"ns.buinessparter.view.Dialog"
+            //         })
+            //     }
+            //     this.isDialog.then(((oDialog)=>oDialog.open()))
+            // },
+            // handleDClose:function(){
+            //     this.byId("fragment").close()
+            // }
+            // onMenuAction:function(oevent){
+            //     var menu_val=oevent.getParameter("item").mProperties.text;
+
+            //     console.log(menu_val);
+            // },
+            
+            onMenuAction: function(oEvent) {
+                var selectedItem = oEvent.getParameter("item").getText();
+                var trimmedKey = selectedItem.replace(/\s/g, "");
+                this.selectedValue = trimmedKey;
+            },
+            onDownloadPress: function() {
+                console.log(this.selectedValue);
+                var selectedVal=this.selectedValue;
+                var url = `assets/${selectedVal}.xlsx`;
+                var filename = `${selectedVal}.xlsx`;
+                
+                var link = document.createElement("a");
+                link.href = url;
+                link.download = filename;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            },
+            
+            onSearch:function(){
+                // debugger;
+                var table=this.getView().byId("table");
+                var oItemBindings = table.getBinding("items");
+                
+                var bookKey=this.getView().byId("s1").mProperties.selectedKeys;
+                var authorKey=this.getView().byId("s2").mProperties.selectedKeys;
+                var genreKey=this.getView().byId("s3").mProperties.selectedKeys;
+
+                console.log(bookKey,authorKey,genreKey);
+                
+                var oFilters = [];
+
+                var headings=["title","author","genre"];
+                var checking=[bookKey,authorKey,genreKey]
+
+                for(let i=0;i<headings.length;i++){
+                    for(let j=0;j<checking[i].length;j++){ 
+                        oFilters.push(new Filter(headings[i],FilterOperator.EQ,checking[i][j]))
+                    }
+                }
+                
+                // console.log(bookKey,bookKey.length)
+                // for(let i=0;i<booklen;i++){
+                //     if(bookKey[i]!==undefined){
+                //         oFilters.push(new Filter("title", FilterOperator.EQ, bookKey[i]))
+                //     }
+                // }
+                // for(let i=0;i<authorlen;i++){
+                //     if(authorKey[i]!==undefined){
+                //         oFilters.push(new Filter("author", FilterOperator.EQ, authorKey[i]))
+                //     }
+                // }
+                // for(let i=0;i<genrelen;i++){
+                //     if(genreKey[i]!==undefined){
+                //         oFilters.push(new Filter("genre", FilterOperator.EQ, genreKey[i]))
+                //     }
+                // }
+
+                console.log("Applied filters:", oFilters);
+
+                if (oFilters.length>0) {
+                    oItemBindings.filter(oFilters,true);
+                } else {
+                    oItemBindings.filter([]);
+                }
+                // debugger;
+
+            },
+            onSelectionChange1:function(){
+                // debugger;
+                var table=this.getView().byId("table");
+                var oItemBindings = table.getBinding("items");
+                var bookName=this.getView().byId("s1").mProperties.selectedKeys;
+                var booklen=bookName.length;
+                var oFilters=[]
+                for(let i=0;i<booklen;i++){
+                    oFilters.push(new Filter("title",FilterOperator.EQ,bookName[i]))
+                }
+                oItemBindings.filter(oFilters);
+                // debugger;
+            },
+            onSelectionChange2:function(){
+                // debugger;
+                var table=this.getView().byId("table");
+                var oItemBindings = table.getBinding("items");
+                var authorName=this.getView().byId("s2").mProperties.selectedKeys[0];
+                var authorlen=authorKey.length
+                var oFilters=[]
+                for(let i=0;i<authorlen;i++){
+                    oFilters.push(new Filter("author",FilterOperator.EQ,authorName[i]))
+                }
+                oItemBindings.filter(oFilters);
+                // debugger;
+            },
+            onSelectionChange3:function(){
+                // debugger;
+                var table=this.getView().byId("table");
+                var oItemBindings = table.getBinding("items");
+                var genreName=this.getView().byId("s3").mProperties.selectedKeys;
+                var genrelen=genreKey.length;
+                var oFilters=[]
+                for(let i=0;i<genrelen;i++){
+                    oFilters.push(new Filter("genre",FilterOperator.EQ,genreName[i]))
+                }
+                oItemBindings.filter(oFilters);
+                // debugger;
+            },
+            onInvSearch:function(oevent){
+                var oFilters=[];
+                var data=oevent.getParameter("query")
+                
+                if(data){
+                    if(data>0){
+                        oFilters.push(new Filter("quantity",FilterOperator.EQ,data))
+                    }else{
+                        oFilters.push(new Filter("title",FilterOperator.Contains,data))
+                    }
+                }
+
+                const oList = this.byId("invoiceList");
+                const oBinding = oList.getBinding("items");
+                oBinding.filter(oFilters);
+            },
+            openNav:function(){
+                const oRouter = this.getOwnerComponent().getRouter();
+			    oRouter.navTo("ManageActivity",{
+                    userName:"karan"
+                });
+            }
+
+        });
+    });

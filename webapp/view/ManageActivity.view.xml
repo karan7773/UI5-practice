@@ -1,0 +1,50 @@
+<mvc:View 
+    xmlns:mvc="sap.ui.core.mvc" 
+    xmlns="sap.m" 
+    displayBlock="true"
+    controllerName="ns.buinessparter.controller.ManageActivity" 
+>
+    <Page id="page">
+        <content>
+            <!-- <Title id="txt" text="User Table"/> -->
+            <Table 
+                id="userTable" 
+                items="{
+                    path:'allUsers>/users'
+                }"
+                headerText="Users Table"
+            >
+                <columns>
+                    <Column >
+                        <Text text="userName"></Text>
+                    </Column>
+                    <Column >
+                        <Text text="contactNo"></Text>
+                    </Column>
+                    <Column >
+                        <Text text="address"></Text>
+                    </Column>
+                    <Column >
+                        <Text text="company"></Text>
+                    </Column>
+                    <Column >
+                        <Text text="activity"></Text>
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem id="col" press="onClick">
+                        <cells>
+                            <Text text="{allUsers>userName}"></Text>
+                            <Text text="{allUsers>contactNo}"></Text>
+                            <Text text="{allUsers>address}"></Text>
+                            <Text text="{allUsers>company}"></Text>
+                            <Text text="{allUsers>activity}"></Text>
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+            <Button id="btn3" press="onBack" text="Go Back"></Button>
+            <Button id="btn2" press="onClick" text="Next"></Button>
+        </content>
+    </Page>
+</mvc:View>

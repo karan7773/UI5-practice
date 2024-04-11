@@ -1,0 +1,743 @@
+<mvc:View 
+    xmlns:tnt="sap.tnt" 
+    xmlns:unified="sap.ui.unified" 
+    xmlns:mvc="sap.ui.core.mvc" 
+    xmlns="sap.m" 
+    xmlns:form="sap.ui.layout.form" 
+    xmlns:l="sap.ui.layout" 
+    xmlns:table="sap.m.table" 
+    xmlns:main="sap.ui.webc.main"
+    xmlns:fiori="sap.ui.webc.fiori"
+    xmlns:codeeditor="sap.ui.codeeditor"
+    xmlns:core="sap.ui.core" 
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:f="sap.f"
+    xmlns:grid="sap.ui.layout.cssgrid"
+    controllerName="ns.buinessparter.controller.Suppliers" 
+    displayBlock="true"
+>
+    <Page id="page" title="{i18n>title}">
+
+        <!-- Registration Form -->
+        <content>
+            <Title id="txt" text="Registration Form"/>
+
+            <form:SimpleForm editable="true" id="sf">
+                <form:content>
+                    <Title id="title" text="Personal Details"/>
+
+                    <Label id="l1" text="First Name"/>
+                    <Input id="i1" type="Text" placeholder="Enter First Name" maxLength="20"/>
+                    <Label id="l2" text="Last Name"/>
+                    <Input id="i2" type="Text" placeholder="Enter Second Name" maxLength="20"/>
+                    <Label id="l3" text="Email"/>
+                    <Input id="i3" type="Email" liveChange="handleLiveChange" placeholder="Enter Email" maxLength="35"/>
+                    <Label id="l4" text="Password"/>
+                    <Input id="i4" type="Password" placeholder="Enter password"/>
+
+                    <Button id="btn" text="Submit" press="onShowHello" icon="sap-icon://accept"/>
+                </form:content>
+            </form:SimpleForm>
+        </content>
+
+        <!-- Generic Tags -->
+        <content>
+            <l:VerticalLayout id="verticalLayout" class="vertical" width="100%">
+                <l:Grid id="g">
+                    <FlexBox id="fb" direction="Column" alignItems="Start" justifyContent="Center">
+                        <Title id="heading" text="Genric tags"/>
+                        <GenericTag id="gt1" text="Price" status="Error" design="StatusIconHidden" press="onPress">
+                            <ObjectNumber id="num1" textAlign="End" emphasized="true" number="3.7m" unit="INR"/>
+                        </GenericTag>
+                        <GenericTag id="gt2" text="Price" status="Warning" design="StatusIconHidden" press="onPress">
+                            <ObjectNumber id="num2" textAlign="End" emphasized="true" number="3.7m" unit="INR"/>
+                        </GenericTag>
+                        <GenericTag id="gt3" text="Price" status="Success" design="StatusIconHidden" press="onPress">
+                            <ObjectNumber id="num3" textAlign="End" emphasized="true" number="25" unit="%"/>
+                        </GenericTag>
+                        <GenericTag id="gt4" text="Price" status="Success" design="Full" press="onPress">
+                            <ObjectNumber id="num4" textAlign="End" emphasized="false" number="25" unit="%"/>
+                        </GenericTag>
+                        <GenericTag id="gt5" text="Price" status="Warning" press="onPress">
+                            <ObjectNumber id="num5" textAlign="End" emphasized="true" number="25" unit="EUR"/>
+                        </GenericTag>
+                        <GenericTag id="gt6" text="Price" status="Error" design="StatusIconHidden" press="onPress" valueState="None">
+                            <ObjectNumber id="num6" textAlign="End" emphasized="true" number="25" unit="USD"/>
+                        </GenericTag>
+                    </FlexBox>
+                </l:Grid>
+            </l:VerticalLayout>
+        </content>
+
+        <!-- Table -->
+        <content>
+            <Table width="100%">
+                <infoToolbar>
+                    <OverflowToolbar>
+                        <Label text="Product table"/>
+                    </OverflowToolbar>
+                </infoToolbar>
+                <columns>
+                    <Column minScreenWidth="Tablet" demandPopin="true">
+                        <Text text="Sno"/>
+                    </Column>
+                    <Column>
+                        <Text text="Name of Product"/>
+                    </Column>
+                    <Column>
+                        <Text text="Price"/>
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem>
+                        <cells>
+                            <Text text="001"/>
+                            <Text text="pen"/>
+                            <Input id="Col1" placeholder="Enter the price"/>
+                        </cells>
+                    </ColumnListItem>
+                    <ColumnListItem>
+                        <cells>
+                            <Text text="003"/>
+                            <Text text="Note"/>
+                            <Input placeholder="Enter the price"/>
+                        </cells>
+                    </ColumnListItem>
+                    <ColumnListItem>
+                        <cells>
+                            <Text text="006"/>
+                            <Text text="Phone"/>
+                            <Input placeholder="Enter the price"/>
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+            <Button press="getP" text="Submit"/>
+        </content>
+
+        <!-- Menu Button -->
+        <content>
+            <Title text="Menu Button" width="100%"/>    
+            <MenuButton id="menu" text="Calculator">
+                <menu>
+                    <Menu id="menu_c">
+                        <MenuItem id="m1" text="add" icon="sap-icon://add"/>
+                        <MenuItem id="m2" text="subtract" icon="sap-icon://less"/>
+                        <MenuItem id="m3" text="multiply" icon="sap-icon://decline"/>
+                    </Menu>
+                </menu>
+            </MenuButton>
+        </content>
+
+        <!-- Toggle Button -->
+        <content>
+            <Title text="Toggle Button" width="100%"/>    
+            <ToggleButton id="t_btn" text="Light" press="onpress_Toggle"/>
+        </content>
+        
+        <!-- Button & Input -->
+        <content>
+            <Title text="Button and input" width="100%"/>   
+             
+            <Button id="myButton" text="Enter Value" press="onButtonClick"/>
+            
+            <Input id="myInputField" width="30%" placeholder="Enter the text to display" visible="false"/>
+            <Button id="myInputField_b" text="Submit" visible="false" press="Submit_btn"/>
+        </content>
+
+        <!-- Button and Image -->
+        <content>
+            <Title text="Button and Image" width="100%"/>
+            
+            <Image src="https://fujifilm-x.com/wp-content/uploads/2021/01/gfx100s_sample_02_thum-1.jpg" visible="false" alt="image" id="img" width="200px"/>
+            <ToggleButton type="Emphasized" tooltip="Details to show" text="get Image" id="img_btn" press="btn_img"/>
+        </content>
+
+        <!-- Generic Tile -->
+        <content>
+            <Title text="Generic Tile" width="100%"></Title>
+            <GenericTile header="Manage Activity" subheader="Subtitle" press="onShowHello">
+                <TileContent unit="EUR" footer="Current Quarter">
+                    <ImageContent src="sap-icon://home-share" />
+                </TileContent>
+            </GenericTile>
+            <GenericTile header="Right click to open in new tab" subheader="Subtitle" press="onShowHello" url="https://www.sap.com/">
+                <TileContent unit="EUR" footer="Current Quarter">
+                    <ImageContent src="https://raw.githubusercontent.com/SAP/ui5-webcomponents/main/docs/images/UI5_logo_wide.png"/>
+                </TileContent>
+            </GenericTile>
+        </content>
+
+        <!-- Slide Tile -->
+        <content>
+            <Title text="Slide Tile" width="100%"></Title>
+            
+            <SlideTile transitionTime="500" displayTime="2500" >
+                <GenericTile 
+                    backgroundImage="https://w0.peakpx.com/wallpaper/165/747/HD-wallpaper-beautiful-landscape-digital-art.jpg"
+                    header="Manage Activity"
+                    press="onShowHello" 
+                    frameType="TwoByOne"
+                >
+                    <TileContent>
+                        <NewsContent
+                            contentText="SAP Unveils Powerful New Player Comparison Tool Exclusively on NFL.com"
+                            subheader="August 21, 2013" press="onShowHello">
+                        </NewsContent>
+                    </TileContent>
+                </GenericTile>
+                <GenericTile 
+                    backgroundImage="https://w0.peakpx.com/wallpaper/165/747/HD-wallpaper-beautiful-landscape-digital-art.jpg"
+                    header="Right click to open in new tab" 
+                    press="onShowHello" 
+                    url="https://www.sap.com/" 
+                    frameType="TwoByOne"
+                >
+                    <TileContent unit="EUR" footer="Current Quarter">
+                        <NewsContent
+                            contentText="SAP Unveils Powerful New Player Comparison Tool Exclusively on NFL.com"
+                            subheader="August 21, 2013" press="onShowHello">
+                        </NewsContent>
+                    </TileContent>
+                </GenericTile>
+            </SlideTile>
+        </content>
+
+        <!-- Numeric Content -->
+        <content>
+            <Title text="Numeric Content in Tile" width="100%"></Title>
+
+            <GenericTile header="Country-Specific Profit Margin" subheader="Error" press="onShowHello">
+                <TileContent >
+                    <NumericContent scale="M" value="1.96" valueColor="Error" indicator="Down" withMargin="true"/>
+                </TileContent>
+            </GenericTile>
+            <GenericTile header="Country-Specific Profit Margin" subheader="Critical" press="onShowHello">
+                <TileContent >
+                    <NumericContent scale="M" value="1.96" valueColor="Critical"  withMargin="false"/>
+                </TileContent>
+            </GenericTile>
+            <GenericTile header="Country-Specific Profit Margin" subheader="Good" press="onShowHello">
+                <TileContent >
+                    <NumericContent scale="M" value="1.96" valueColor="Good" indicator="Up" withMargin="false"/>
+                </TileContent>
+            </GenericTile>
+        </content>
+
+        <!-- Dialog -->
+        <content>
+            <Title text="Dialog box" width="100%"></Title>
+            <l:VerticalLayout width="100%">
+                <Button ariaHasPopup="Dialog" press="handleOpen" text="Show Dialog" ></Button>
+                <Dialog id="helloDialog" draggable="true" resizable="true" title="Registration Form">
+                    <l:VerticalLayout>
+                        <Input id="username" placeholder="Enter username" />
+                        <Input id="email" placeholder="Enter e-mail" />
+                        <Input id="password" type="Password" placeholder="Enter password" valueState="Error" />
+                    </l:VerticalLayout>
+                    <footer>
+                        <Toolbar>
+                            <Button press="handleClose" text="Register" type="Emphasized"></Button>
+                        </Toolbar>
+                    </footer>
+                </Dialog>
+            </l:VerticalLayout>
+        </content>
+
+        <!-- Message Strip -->
+        <content>
+            <Title text="Message Strip" width="100%"></Title>
+            <MessageStrip 
+                text="Default (Information) with default icon and close button" 
+                enableFormattedText="true"
+                showIcon="true"
+                showCloseButton="true">
+            </MessageStrip>
+            <MessageStrip 
+                text="Error with link to SAP Homepage (For more info)" 
+                type="Error"
+                enableFormattedText="true"
+                showIcon="true"
+                showCloseButton="true">
+            </MessageStrip>
+            <MessageStrip 
+                text="Warning with default icon and close button" 
+                enableFormattedText="true"
+                type="Warning"
+                showIcon="true"
+                showCloseButton="true">
+            </MessageStrip>
+            <MessageStrip 
+                text="Success with default icon and close button" 
+                enableFormattedText="true"
+                type="Success"
+                showIcon="true"
+                showCloseButton="true">
+            </MessageStrip>
+        </content>
+
+        <!-- Busy Indicator -->
+        <content>
+            <Title text="Busy Indicator" width="100%"></Title>
+            <BusyIndicator text="Loading" size="1rem" ></BusyIndicator>
+        </content>
+
+        <!-- Panel -->
+        <content>
+            <Title text="Panel" width="100%" ></Title>
+            <Panel expandable="true" headerText="Monitor" width="auto">
+                <content>
+                    <Text text="Lorem ipsum dolor st amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor 
+                    invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo
+                    duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
+                    amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
+                    ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur 
+                    sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat" />
+                    <Image src="https://images.gizbot.com/webp/img/2023/07/apple-mac-studio-display-smart-02-1688387922.jpg" width="150px"></Image>
+                </content>
+            </Panel>
+            <Panel expandable="true" expanded="true" width="auto">
+                <headerToolbar>
+                    <OverflowToolbar>
+                        <Title text="Ipad"></Title>
+                        <ToolbarSpacer/>
+                        <Button icon="sap-icon://edit"></Button>
+                    </OverflowToolbar>
+                </headerToolbar>
+                <content>
+                    <Text text="The iPad is a touchscreen tablet PC made by Apple. The original iPad debuted in 2010. Apple 
+                    has four iPad product lines: iPad, iPad mini, iPad Air and iPad Pro. All models are available in a variety 
+                    of colors. They run Apple iPadOS mobile operating system (OS) and have Wi-Fi and Bluetooth connectivity. 
+                    The latest models support 5G cellular service.These portable devices provide a more substantial computer 
+                    device than a smartphone; however, they don't come with all the features and capabilities of a laptop. 
+                    They are easy to use and have Apple's highly optimized hardware and software that the company designs and 
+                    updates." />
+                    <Link href="https://www.apple.com/in/ipad/" text="link" target="_blank"></Link>
+                    <Image src="https://idestiny.in/wp-content/uploads/2022/03/ipad-air-select-cell-purple-202203.png" width="150px"></Image>
+                </content>
+            </Panel>
+        </content>
+
+        <!-- Avatar -->
+        <content>
+            <Title text="Avatar" width="100%"></Title>
+            <HBox alignContent="Center">
+                <VBox >
+                    <Avatar src="https://idestiny.in/wp-content/uploads/2022/03/ipad-air-select-cell-purple-202203.png"></Avatar>
+                    <Text text="Ipad"></Text>
+                </VBox>
+                <VBox >
+                    <Avatar displayShape="Square" 
+                        displaySize="XL" 
+                        imageFitType="Cover" 
+                        badgeValueState="Warning" 
+                        badgeIcon="sap-icon://alert" 
+                        src="https://cdn.icon-icons.com/icons2/2643/PNG/512/male_man_people_person_avatar_white_tone_icon_159363.png"></Avatar>
+                    <Text text="Ipad"></Text>
+                </VBox>
+            </HBox>
+        </content>
+
+        <!-- Barcode Scanner -->
+        <content>
+            <Title text="Barcode Scanner" width="100%" ></Title>
+            <Button text="Open barcode Scanner" press="openBarcodeScannerDialog" icon="camera" ></Button>
+            <fiori:BarcodeScannerDialog
+                id="bsd"
+                scanError="handleScanError"
+                scanSuccess="handleScanSuccess"/>
+        </content>
+
+        <!-- Calender -->
+        <content>
+            <Title text="Calender" width="100%"></Title>
+            <unified:Calendar ></unified:Calendar>
+            <unified:Calendar primaryCalendarType="Gregorian" secondaryCalendarType="Islamic"></unified:Calendar>
+        </content>
+
+        <!-- Feed Input -->
+        <content>
+            <Title text="Feed Input" width="100%"></Title>
+            <FeedInput showIcon="true" post="onPost" icon="https://cdn.icon-icons.com/icons2/2643/PNG/512/male_man_people_person_avatar_white_tone_icon_159363.png" ></FeedInput>
+        </content>
+
+        <!-- Progress Indicator -->
+        <content>
+            <Title text="Progress Indicator" width="100%"></Title>
+            <ProgressIndicator displayValue="Success" state="Success" percentValue="73" />
+            <ProgressIndicator displayValue="Error" state="Error" percentValue="32" />
+            <ProgressIndicator displayValue="Warning" state="Warning" percentValue="49" />
+            <ProgressIndicator displayValue="Information" state="Information" percentValue="7" />
+        </content>
+
+        <!-- Radio Button -->
+        <content>
+            <Title text="Radio Button" width="100%"></Title>
+            <RadioButton valueState="Success" text="Option A" />
+            <RadioButton valueState="Error" text="Option B" />
+            <RadioButton valueState="Warning" text="Option C" />
+            <RadioButton valueState="None" text="Option D" enabled="false" />
+        </content>
+
+        <!-- Slider -->
+        <content>
+            <Title text="Slider" width="100%"></Title>
+            <Slider value="5" width="73%" enableTickmarks="true" min="0" max="100" ></Slider>
+        </content>
+
+        <!-- Range Slider -->
+        <content>
+            <Title text="Range Slider"></Title>
+            <RangeSlider min="0" max="100" enableTickmarks="true" width="73%" step="2" ></RangeSlider>
+        </content>
+
+        <!-- Segmented Button -->
+        <content>
+            <Title text="Segmented Button" width="100%"></Title>
+            <SegmentedButton width="35%">
+                <items>
+                    <SegmentedButtonItem text="Home" icon="sap-icon://home" />
+                    <SegmentedButtonItem text="Contact" icon="sap-icon://contacts" />
+                    <SegmentedButtonItem text="User" icon="sap-icon://person-placeholder" />
+                </items>
+            </SegmentedButton>
+        </content>
+
+        <!-- Tab container -->
+        <content>
+            <Title text="Tab Container" width="100%" ></Title>
+            <main:TabContainer>
+                <main:Tab text="Section 1">
+                    <Title text="Section 1" level="H2"/>    
+                </main:Tab>
+                <main:Tab text="Section 2">
+                    <Title text="Section 2" level="H2"/>    
+                </main:Tab>
+                <main:Tab text="Section 3">
+                    <Title text="Section 3" level="H2"/>    
+                </main:Tab>
+                <main:Tab text="Section 4">
+                    <Title text="Section 4" level="H2"/>    
+                </main:Tab>
+                <main:Tab text="Section 5">
+                    <Title text="Section 5" level="H2"/>    
+                </main:Tab>
+                <main:Tab text="Section 6">
+                    <Title text="Section 6" level="H2"/>    
+                </main:Tab>
+                <main:Tab text="Section 7">
+                    <Title text="Section 7" level="H2"/>    
+                </main:Tab>
+                <main:Tab text="Section 8">
+                    <Title text="Section 8" level="H2"/>    
+                </main:Tab>
+                <main:Tab text="Section 9">
+                    <Title text="Section 9" level="H2"/>    
+                </main:Tab>
+                <main:Tab text="Section 10">
+                    <Title text="Section 10" level="H2"/>    
+                </main:Tab>
+            </main:TabContainer>
+        </content>
+
+        <!--Code Editor  -->
+        <content>
+            <Title text="Code Editor" width="100%" />
+            <codeeditor:CodeEditor value="Enter the code here" height="37%"/>
+        </content>
+
+        <!-- Dynamic page with Filter -->
+        <content>
+            <Title text="Dynamic Page Filter" width="100%"></Title>
+            <f:DynamicPage >
+                <!-- <f:title>
+                    <f:DynamicPageTitle >
+                        <f:expandedContent>
+                            <Label text="No filters active"></Label>
+                        </f:expandedContent>
+                        <f:snappedContent>
+                            <Label text="No filters active"></Label>
+                        </f:snappedContent>
+                    </f:DynamicPageTitle>
+                </f:title> -->
+                <f:header>
+                    <f:DynamicPageHeader >
+                        <f:content>
+                            <fb:FilterBar id="filterbar"  search=".onSearch" useToolbar="true">
+                                <fb:filterGroupItems>
+                                    <fb:FilterGroupItem groupName="Group1" label="Title" name="title" visibleInFilterBar="true">
+                                        <fb:control>
+                                            <MultiComboBox 
+                                                id="s1"
+                                                selectionChange=".onSelectionChange1" 
+                                                name="title"
+                                                items="{
+                                                    path:'data>/books'
+                                                }"
+                                            >
+                                                <core:Item key="{data>title}" text="{data>title}"></core:Item>
+                                            </MultiComboBox>
+                                        </fb:control>
+                                    </fb:FilterGroupItem>
+
+                                    <fb:FilterGroupItem groupName="Group1" label="Author" name="author" visibleInFilterBar="true">
+                                        <fb:control>
+                                            <MultiComboBox 
+                                                id="s2"
+                                                selectionChange=".onSelectionChange2" 
+                                                name="author"
+                                                items="{
+                                                    path:'data>/books'
+                                                }"
+                                            >
+                                            <core:Item key="{data>author}"  text="{data>author}"/>
+                                            </MultiComboBox>
+                                        </fb:control>
+                                    </fb:FilterGroupItem>
+
+                                    <fb:FilterGroupItem groupName="Group1" label="Genre" name="genre" visibleInFilterBar="true"> 
+                                        <fb:control>
+                                            <MultiComboBox 
+                                                id="s3"
+                                                name="genre"
+                                                selectionChange=".onSelectionChange3"
+                                                items="{
+                                                    path:'data>/books'
+                                                }"    
+                                            >
+                                                <core:Item key="{data>genre}" text="{data>genre}"></core:Item>
+                                            </MultiComboBox>
+                                        </fb:control>
+                                    </fb:FilterGroupItem>
+                                </fb:filterGroupItems>
+                            </fb:FilterBar>
+                        </f:content>
+                    </f:DynamicPageHeader>
+                </f:header>
+                <f:content>
+                    <Table 
+                        id="table"
+                        items="{
+                            path:'data>/books'
+                        }"
+                    >
+                        <columns>
+                            <Column>
+                                <Text text="title"/>
+                            </Column>
+                            <Column>
+                                <Text text="author"/>
+                            </Column>
+                            <Column>
+                                <Text text="genre"/>
+                            </Column>
+                        </columns>
+                        <items>
+                            <ColumnListItem >
+                                <cells>
+                                    <Text text="{data>title}"></Text>
+                                    <Text text="{data>author}"></Text>
+                                    <Text text="{data>genre}"></Text>
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                    <!-- <core:Fragment fragmentName="ns.buinessparter.view.Dialog" type="XML"/> -->
+                </f:content>
+            </f:DynamicPage>
+        </content>
+
+        <!-- Fragment -->
+        <!-- <content>
+            <Title text="Fragment"></Title>
+            <Button id="btn_d" text="Open Dialog" press="openDialogFragments"/>
+        </content> -->
+
+        <!-- Binding -->
+        <content>
+            <Title text="Binding" width="100%" ></Title>
+            
+            <!-- Property Binding -->
+            <Title text="Property Binding" width="100%" ></Title>
+            <form:SimpleForm >
+                <Label text="{data>/book/title}"></Label>
+                <Input type="Text" value="{data>/book/author}"></Input>
+            </form:SimpleForm>
+
+            <!-- Element Binding -->
+            <Title text="Element Binding" width="100%" ></Title>
+            <form:SimpleForm >
+                <Label text="{data>/books/0/title}"></Label>
+                <Input type="Text" value="{data>/books/1/author}"></Input>
+            </form:SimpleForm>
+
+            <!-- Aggregation Binding -->
+            <Title text="Aggregation Binding" width="100%" ></Title>
+            <Table 
+                items="{
+                    path:'data>/books'
+                }"
+            >
+                <columns>
+                    <Column>
+                        <Text text="title"/>
+                    </Column>
+                    <Column>
+                        <Text text="author"/>
+                    </Column>
+                    <Column>
+                        <Text text="genre"/>
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem >
+                        <cells>
+                            <Text text="{data>title}"></Text>
+                            <Text text="{data>author}"></Text>
+                            <Text text="{data>genre}"></Text>
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+
+            <!-- Expression Binding -->
+            <Title text="Expression Binding" width="100%"></Title>
+            <Button type="{=${data>/book/year_published} >1900 ? 'Accept' :'Reject' }" text="Valid" ></Button>
+            <Button type="{=${data>/book/pages} === 450 ?'Accept':'Reject'}" text="Valid" ></Button>
+        </content>
+        <content>
+            <List 
+                headerText="Books and Published Year" headerLevel="H2" 
+                items="{
+                    path:'data>/books'
+                }">
+                <items>
+                    <StandardListItem title="{data>title} in {data>year_published}"  />
+                </items>
+            </List>
+
+            <f:GridList 
+                headerText="Books"
+                headerLevel="H3"
+                items="{
+                    path:'data>/books'
+                }">
+                <f:GridListItem>
+                    <VBox class="sapUiSmallMargin">
+                        <layoutData>
+                            <FlexItemData growFactor="2" shrinkFactor="0" />
+                        </layoutData>
+
+                        <Title text="{data>title}" wrapping="true" />
+                        <Label text="{data>year_published}" wrapping="true" />
+                    </VBox>
+                </f:GridListItem>
+            </f:GridList>
+        </content>
+
+        <!-- Excel Download -->
+        <content>
+            <OverflowToolbar >
+                <MenuButton text="select" buttonMode="Split">
+                    <menu>
+                        <Menu id="dnld_menu" itemSelected="onMenuAction" >
+                            <MenuItem text="SCM"/>
+                            <MenuItem text="Emp loyee"/>
+                        </Menu>
+                    </menu>
+                </MenuButton>
+            </OverflowToolbar>
+            <Link text="Download XML File" press="onDownloadPress"/>
+        </content>
+
+        <!-- <VBox>
+            <form:Form id="Excel">
+                        <form:title>
+                    <core:Title text="Pickling QA Reporting" />
+                </form:title>
+                <form:layout>
+                    <form:ResponsiveGridLayout
+                        labelSpanXL="6"
+                        labelSpanL="6"
+                        labelSpanM="6"
+                        labelSpanS="12"
+                        adjustLabelSpan="true"
+                        columnsXL="5"
+                        columnsL="5"
+                        columnsM="5"
+                        singleContainerFullSize="false" />
+                </form:layout>
+    
+                <form:formContainers>
+                    <form:FormContainer title="Excel template download ">
+                        <form:formElements>
+                            <form:FormElement label="Excel download template">
+                                <form:fields>
+                                     <Select
+                                        forceSelection="false"  
+                                        selectedKey="{data>/items}"
+                                        editable="true"
+                                        change="onselectionchange"
+                                        id="u3"                
+                                        items="{
+                                            path: 'data>/items' }">
+                                            <core:Item key="{data>key}" text="{data>text}" />
+                                    </Select>
+                                </form:fields>
+                            </form:FormElement>
+                        </form:formElements>
+                    </form:FormContainer>
+                </form:formContainers>
+            </form:Form >
+        </VBox> -->
+
+        <!-- Pdf viewer -->
+        <content>
+            <PDFViewer source="/assets/pdf.pdf" width="50%" height="50%" />
+        </content>
+
+        <!-- Invoice List Filter -->
+        <content>
+            <List 
+                items="{datas>/books}"
+                id="invoiceList"
+            >
+                <headerToolbar>
+                    <Toolbar >
+                        <Title text="Invoice List"></Title>
+                        <ToolbarSpacer />
+                        <SearchField search=".onInvSearch" width="50%" ></SearchField>
+                    </Toolbar>
+                </headerToolbar>
+                <items>
+                    <ObjectListItem 
+                        title="{datas>title}" 
+                        number="{datas>quantity}"
+                        numberState="{=${datas>quantity} > 15 ? 'Success' : 'Error'}"
+                        numberUnit="EUR"
+                    >
+                        <firstStatus>
+                            <ObjectStatus 
+                                text="{
+                                    path:'datas>Status',
+                                    formatter:'.formatter.statusText'
+                                }"
+                            ></ObjectStatus>
+                        </firstStatus>
+                    </ObjectListItem>
+                </items>
+            </List>
+        </content>
+
+        <!-- Navigation -->
+        <content>
+            <Title text="Navigation" width="100%"></Title>
+            <GenericTile header="Manage Activity of users" subheader="Subtitle" press="openNav">
+                <TileContent unit="EUR" footer="Current Quarter">
+                    <ImageContent src="sap-icon://home-share" />
+                </TileContent>
+            </GenericTile>
+        </content>
+
+    </Page>
+</mvc:View>

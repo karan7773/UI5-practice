@@ -1,0 +1,108 @@
+{
+    "book":{
+        "title": "The Hobbit",
+        "key":1,
+        "author": "J.R.R. Tolkien",
+        "genre": "Fantasy",
+        "year_published": 1937,
+        "isbn": "978-0345339683",
+        "publisher": "Houghton Mifflin Harcourt",
+        "pages": 320
+    },
+    "books": [
+      {
+        "title": "To Kill a Mockingbird",
+        "key":1,
+        "author": "Harper Lee",
+        "genre": "Fiction",
+        "year_published": 1960,
+        "isbn": "978-0061120084",
+        "publisher": "Harper Perennial Modern Classics",
+        "pages": 336
+      },
+      {
+        "title": "Moby-Dick; or, The Whale",
+        "key":2,
+        "author": "George Orwell",
+        "genre": "Dystopian fiction",
+        "year_published": 1949,
+        "details":[
+            {   
+                "isbn": "978-0451524935",
+                "publisher": "Signet Classic",
+                "pages": 328
+            },
+            {
+                "genre": "Fiction",
+                "year_published": 1925,
+                "isbn": "978-0743273565",
+                "publisher": "Scribner",
+                "pages": 180
+            },
+            {
+                "genre": "Romance",
+                "year_published": 1813,
+                "isbn": "978-1503290561",
+                "publisher": "CreateSpace Independent Publishing Platform",
+                "pages": 226
+            }
+        ]
+      },
+      {
+        "title": "The Great Gatsby",
+        "key":3,
+        "author": "F. Scott Fitzgerald",
+        "genre": "Fiction",
+        "year_published": 1925,
+        "isbn": "978-0743273565",
+        "publisher": "Scribner",
+        "pages": 180
+      },
+      {
+        "title": "Pride and Prejudice",
+        "key":4,
+        "author": "Jane Austen",
+        "genre": "Romance",
+        "year_published": 1813,
+        "isbn": "978-1503290561",
+        "publisher": "CreateSpace Independent Publishing Platform",
+        "pages": 226
+      },
+      {
+        "title": "The Catcher in the Rye",
+        "key":5,
+        "author": "J.D. Salinger",
+        "genre": "Coming-of-age fiction",
+        "year_published": 1951,
+        "isbn": "978-0316769488",
+        "publisher": "Little, Brown and Company",
+        "pages": 288
+      },
+      {
+        "title": "Moby-Dick; or, The Whale",
+        "key":6,
+        "author": "Herman Melville",
+        "genre": "Adventure fiction",
+        "year_published": 1851,
+        "isbn": "978-1503280784",
+        "publisher": "CreateSpace Independent Publishing Platform",
+        "pages": 654
+      },
+      {
+        "title": "The Hobbit",
+        "key":7,
+        "author": "J.R.R. Tolkien",
+        "genre": "Fantasy",
+        "year_published": 1937,
+        "isbn": "978-0345339683",
+        "publisher": "Houghton Mifflin Harcourt",
+        "pages": 320
+      }
+    ],
+    "menu":{
+      "data1":"excel 1",
+      "data2":"excel 2",
+      "data3":"excel 3"
+    }
+  }
+  

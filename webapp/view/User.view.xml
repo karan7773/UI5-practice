@@ -1,0 +1,12 @@
+<mvc:View
+    xmlns:mvc="sap.ui.core.mvc" 
+    xmlns="sap.m" 
+    displayBlock="true"
+    controllerName="ns.buinessparter.controller.User" 
+>
+    <Page id="userpage">
+        <content>
+
+        </content>
+    </Page>
+</mvc:View>

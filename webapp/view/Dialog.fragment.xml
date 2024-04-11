@@ -1,0 +1,27 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout" 
+    xmlns:core="sap.ui.core"
+    
+>
+    <Page id="fragment" >
+        <content>
+            <Title text="hello cydjs"></Title>
+            <!-- <Button ariaHasPopup="Dialog" press="handleOpen" text="Show Dialog" ></Button>
+            <Dialog id="helloDialog" draggable="true" resizable="true" title="Registration Form">
+                <l:VerticalLayout>
+                    <Input id="username" placeholder="Enter username" />
+                    <Input id="email" placeholder="Enter e-mail" />
+                    <Input id="password" type="Password" placeholder="Enter password" valueState="Error" />
+                </l:VerticalLayout>
+                <footer>
+                    <Toolbar>
+                        <Button press="handleClose" text="Register" type="Emphasized"></Button>
+                    </Toolbar>
+                </footer>
+            </Dialog> -->
+            
+        </content>
+    </Page>
+
+</core:FragmentDefinition>

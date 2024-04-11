@@ -1,0 +1,53 @@
+{
+    "books": [
+        {
+          "title": "To Kill a Mockingbird",
+          "author": "Harper Lee",
+          "genre": "Fiction",
+          "quantity":34,
+          "Status":"A"
+        },
+        {
+          "title": "Moby-Dick; or, The Whale",
+          "author": "George Orwell",
+          "genre": "Dystopian fiction",
+          "quantity":33,
+          "Status":"B"
+        },
+        {
+          "title": "The Great Gatsby",
+          "author": "F. Scott Fitzgerald",
+          "genre": "Fiction",
+          "quantity":67,
+          "Status":"A"
+        },
+        {
+          "title": "Pride and Prejudice",
+          "author": "Jane Austen",
+          "genre": "Romance",
+          "quantity":45,
+          "Status":"C"
+        },
+        {
+          "title": "The Catcher in the Rye",
+          "author": "J.D. Salinger",
+          "genre": "Coming-of-age fiction",
+          "quantity":9,
+          "Status":"C"
+        },
+        {
+          "title": "Moby-Dick; or, The Whale",
+          "author": "Herman Melville",
+          "genre": "Adventure fiction",
+          "quantity":2,
+          "Status":"A"
+        },
+        {
+          "title": "The Hobbit",
+          "author": "J.R.R. Tolkien",
+          "genre": "Fantasy",
+          "quantity":31,
+          "Status":"B"
+        }
+      ]
+}
