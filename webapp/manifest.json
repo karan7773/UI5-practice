@@ -109,14 +109,14 @@
             "TargetSuppliers"
           ]
         },{
-          "pattern": "ManageActivity/{userName}",
+          "pattern": "ManageActivity",
           "name": "ManageActivity",
           "target":[
             "ManageActivity"
           ]
         },
         {
-          "pattern": "User",
+          "pattern": "User/{userId}",
           "name": "User",
           "target":[
             "User"

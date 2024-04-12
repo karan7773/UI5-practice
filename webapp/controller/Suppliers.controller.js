@@ -233,9 +233,7 @@ sap.ui.define([
             },
             openNav:function(){
                 const oRouter = this.getOwnerComponent().getRouter();
-			    oRouter.navTo("ManageActivity",{
-                    userName:"karan"
-                });
+			    oRouter.navTo("ManageActivity");
             }
 
         });

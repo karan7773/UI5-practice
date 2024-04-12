@@ -6,7 +6,11 @@
 >
     <Page id="userpage">
         <content>
-
+            <Title text="{user>/userName}" id="uname" width="100%"></Title>
+            <Title text="{user>/contactNo}" width="100%" ></Title>
+            <Title text="{user>/address}" width="100%" ></Title>
+            <Title text="{user>/company}" width="100%" ></Title>
+            <Title text="{user>/activity}" width="100%" ></Title>
         </content>
     </Page>
 </mvc:View>
