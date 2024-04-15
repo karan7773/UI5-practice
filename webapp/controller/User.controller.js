@@ -24,6 +24,10 @@ sap.ui.define([
                 this.getView().setModel(oViewModel,"user");
             }
         },
+        back(){
+            var oRoute=this.getOwnerComponent().getRouter()
+            oRoute.navTo("ManageActivity")
+        }
         
     })
 });

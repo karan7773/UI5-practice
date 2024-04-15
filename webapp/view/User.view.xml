@@ -11,6 +11,7 @@
             <Title text="{user>/address}" width="100%" ></Title>
             <Title text="{user>/company}" width="100%" ></Title>
             <Title text="{user>/activity}" width="100%" ></Title>
+            <Button text="back" press="back" />
         </content>
     </Page>
 </mvc:View>

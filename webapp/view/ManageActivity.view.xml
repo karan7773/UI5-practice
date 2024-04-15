@@ -15,7 +15,6 @@
                 headerText="Users Table"
                 mode="SingleSelect"
                 selectionChange="onClick"
-                rowClick="onClick"
             >
                 <columns>
                     <Column >

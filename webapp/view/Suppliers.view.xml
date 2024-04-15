@@ -739,7 +739,12 @@
             </GenericTile>
         </content>
 
-        <!--  -->
-
+        <!-- Split App Tile -->
+        <content>
+            <Title text="Split App" width="100%"/>
+            <GenericTile header="Split App" press="openSplitApp" >
+                <TileContent footer="App"/>
+            </GenericTile>
+        </content>
     </Page>
 </mvc:View>

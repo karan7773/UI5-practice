@@ -108,7 +108,8 @@
           "target": [
             "TargetSuppliers"
           ]
-        },{
+        },
+        {
           "pattern": "ManageActivity",
           "name": "ManageActivity",
           "target":[
@@ -120,6 +121,13 @@
           "name": "User",
           "target":[
             "User"
+          ]
+        },
+        {
+          "pattern": "SplitApp",
+          "name": "SplitApp",
+          "target":[
+            "SplitApp"
           ]
         }
       ],
@@ -144,6 +152,13 @@
           "clearControlAggregation": false,
           "viewId": "User",
           "viewName": "User"
+        },
+        "SplitApp":{
+          "viewType": "XML",
+          "transition":"slide",
+          "clearControlAggregation": false,
+          "viewId": "SplitApp",
+          "viewName": "SplitApp"
         }
       }
     },

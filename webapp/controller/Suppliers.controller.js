@@ -234,7 +234,10 @@ sap.ui.define([
             openNav:function(){
                 const oRouter = this.getOwnerComponent().getRouter();
 			    oRouter.navTo("ManageActivity");
+            },
+            openSplitApp(){
+                const oRouter=this.getOwnerComponent().getRouter()
+                oRouter.navTo("SplitApp")
             }
-
         });
     });
