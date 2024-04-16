@@ -4,17 +4,24 @@ sap.ui.define([
     "sap/ui/core/Fragment",
     "sap/ui/model/Filter",
     "sap/ui/model/FilterOperator",
-    "ns/buinessparter/model/formatter"
+    "ns/buinessparter/model/formatter",
+	"sap/ui/model/json/JSONModel"
 ],
     /**
      * @param {typeof sap.ui.core.mvc.Controller} Controller
      */
-    function (Controller,MessageToast,Fragment,Filter,FilterOperator,formatter) {
+    function (Controller,MessageToast,Fragment,Filter,FilterOperator,formatter,JSONModel) {
         "use strict";
 
         return Controller.extend("ns.buinessparter.controller.Suppliers", {
             formatter: formatter,
             onInit: function () {
+                this.oModel = new JSONModel({
+                    child1: true,
+                    child2: false,
+                    child3: true
+                });
+                this.getView().setModel(this.oModel);
             },
             onShowHello() {
                 MessageToast.show("Manage Activity is Pressed");
@@ -238,6 +245,10 @@ sap.ui.define([
             openSplitApp(){
                 const oRouter=this.getOwnerComponent().getRouter()
                 oRouter.navTo("SplitApp")
+            },
+            onParentClicked(oEvent) {
+                var bSelected = oEvent.getParameter("selected");
+                this.oModel.setData({ child1: bSelected, child2: bSelected, child3: bSelected });
             }
         });
     });

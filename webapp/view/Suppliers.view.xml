@@ -746,5 +746,22 @@
                 <TileContent footer="App"/>
             </GenericTile>
         </content>
+
+        <!-- check box -->
+        <content>
+            <Title text="check box" width="100%"/>
+            <l:VerticalLayout >
+                <Text text="Which language do u speek ?"></Text>
+                <CheckBox 
+                    text="Select All / Deselect All"
+                    selected="{= ${/child1} || ${/child2} || ${/child3}}"
+                    partiallySelected="{= !(${/child1} &amp;&amp; ${/child2} &amp;&amp; ${/child3})}"
+                    select="onParentClicked" 
+                ></CheckBox>
+                <CheckBox text="English" selected="{/child1}"/>
+                <CheckBox text="German" selected="{/child2}" />
+                <CheckBox text="French" selected="{/child3}"/>
+            </l:VerticalLayout>
+        </content>
     </Page>
 </mvc:View>
