@@ -21,7 +21,6 @@ sap.ui.define([
                     child2: false,
                     child3: true
                 });
-                this.getView().setModel(this.oModel);
             },
             onShowHello() {
                 MessageToast.show("Manage Activity is Pressed");
@@ -249,6 +248,27 @@ sap.ui.define([
             onParentClicked(oEvent) {
                 var bSelected = oEvent.getParameter("selected");
                 this.oModel.setData({ child1: bSelected, child2: bSelected, child3: bSelected });
-            }
+            },
+            goToPaymentStep: function () {
+                this.byId("PaymentTypeStep").setNextStep(this.getView().byId("CashOnDeliveryStep"));
+
+                // var selectedKey = this.model.getProperty("/selectedPayment");
+    
+                // switch (selectedKey) {
+                //     case "Credit Card":
+                //         this.byId("PaymentTypeStep").setNextStep(this.getView().byId("CreditCardStep"));
+                //         break;
+                //     case "Bank Transfer":
+                //         this.byId("PaymentTypeStep").setNextStep(this.getView().byId("BankAccountStep"));
+                //         break;
+                //     case "Cash on Delivery":
+                //     default:
+                //         this.byId("PaymentTypeStep").setNextStep(this.getView().byId("CashOnDeliveryStep"));
+                //         break;
+                // }
+            },
+            getPage: function () {
+                return this.byId("y");
+            },
         });
     });

@@ -762,6 +762,147 @@
                 <CheckBox text="German" selected="{/child2}" />
                 <CheckBox text="French" selected="{/child3}"/>
             </l:VerticalLayout>
+        </content>        
+
+        <!-- wizard -->
+        <content>
+            <NavContainer >
+                <pages>
+                    <f:DynamicPage id="dynamicPage" >
+                        <f:title>
+                            <f:DynamicPageTitle >
+                                <f:heading>
+                                    <Title text="Wizard"></Title>
+                                </f:heading>
+                            </f:DynamicPageTitle>
+                        </f:title>
+                        <f:content>
+                            <Wizard >
+                                <WizardStep 
+                                    title="Shopping Items"
+                                    id="ShoppingCartWizard"
+                                >
+                                    <ObjectHeader
+                                        title="Total"
+                                        numberUnit="EUR">
+                                        <attributes>
+                                            <ObjectAttribute text="This is the list of items in your shopping cart"/>
+                                        </attributes>
+                                    </ObjectHeader>
+                                    <List mode="Delete"
+                                        items="{data>/books}"
+                                        enableBusyIndicator="true"
+                                        delete="handleDelete"
+                                        headerText="Items">
+                                        <StandardListItem
+                                            title="{data>title}"/>
+                                    </List>
+                                </WizardStep>
+                                <WizardStep 
+							        id="PaymentTypeStep"
+                                    title="Payment type"
+							        subsequentSteps="CreditCardStep, BankAccountStep, CashOnDeliveryStep"
+                                    complete="goToPaymentStep"
+                                >
+                                    <Text
+							            text="We accept all major credit cards. No extra cost will be 
+                                        charged when paying with a credit card. Bank transfer and Cash on 
+                                        delivery are only possible for inland deliveries. A service charge 
+                                        of 2.99 EUR will be charged for these types of deliveries. Be aware, 
+                                        that for Bank transfers, the shipping will start on the day after the 
+                                        payment is received."/>
+
+                                    <HBox
+                                        alignItems="Center"
+                                        justifyContent="Center"
+                                        width="100%">
+                                        <SegmentedButton selectionChange="setPaymentMethod" id="paymentMethodSelection"
+                                                        selectedKey="{/selectedPayment}">
+                                            <items>
+                                                <SegmentedButtonItem key="Credit Card" icon="sap-icon://credit-card"
+                                                                    text="Credit card"/>
+                                                <SegmentedButtonItem key="Bank Transfer" icon="sap-icon://official-service"
+                                                                    text="Bank transfer"/>
+                                                <SegmentedButtonItem key="Cash on Delivery" icon="sap-icon://money-bills"
+                                                                    text="Cash on delivery"/>
+                                            </items>
+                                        </SegmentedButton>
+                                    </HBox>
+                                </WizardStep>
+                                <WizardStep
+                                    id="CreditCardStep"
+                                    title="Credit card info"
+                                    nextStep="BillingStep"
+                                    activate="checkCreditCardStep"
+                                    icon="sap-icon://credit-card">
+                                    <MessageStrip text="Enter at least 3 symbols for credit card name."/>
+                                    <form:SimpleForm
+                                        editable="true"
+                                        layout="ColumnLayout">
+                                        <Label text="Name on card" required="true"/>
+                                        <Input value="{/CreditCard/Name}" liveChange="checkCreditCardStep"
+                                            valueLiveUpdate="true"/>
+                                        <Label text="Card number"/>
+                                        <Input value="{/CardNumber}"/>
+                                        <Label text="Security code"/>
+                                        <Input value="{/CreditCard/SecurityCode}"/>
+                                        <Label text="Expiration date"/>
+                                        <DatePicker value="{/CreditCard/Expire}"/>
+                                    </form:SimpleForm>
+                                </WizardStep>
+                                <WizardStep
+                                    id="BankAccountStep"
+                                    title="Beneficial bank info"
+                                    nextStep="BillingStep"
+                                    icon="sap-icon://official-service">
+                                    <Panel>
+                                        <headerToolbar>
+                                            <Toolbar height="0rem">
+                                                <Title text=""/>
+                                            </Toolbar>
+                                        </headerToolbar>
+                                        <l:Grid
+                                            defaultSpan="L6 M6 S10"
+                                            hSpacing="2">
+                                            <Label text="Beneficiary Name" design="Bold"/>
+                                            <Label text="Singapore Hardware e-Commerce LTD"/>
+                                            <Label text="Beneficiary Bank" design="Bold"/>
+                                            <Label text="CITY BANK, SINGAPORE BRANCH"/>
+                                            <Label text="Beneficiary Account Number" design="Bold"/>
+                                            <Label text="06110702027218"/>
+                                            <Label text="Bank Phone Number" design="Bold"/>
+                                            <Label text="+65-6224-2622"/>
+                                            <Label text="Bank Email Address" design="Bold"/>
+                                            <Label text="customerservice@citybank.com"/>
+                                        </l:Grid>
+                                    </Panel>
+                                </WizardStep>
+                                <WizardStep
+                                    id="CashOnDeliveryStep"
+                                    title="Cash on delivery info"
+                                    nextStep="BillingStep"
+                                    activate="checkCashOnDeliveryStep"
+                                    icon="sap-icon://money-bills">
+                                    <MessageStrip text="Enter at least 3 symbols for first name."/>
+                                    <form:SimpleForm
+                                        editable="true"
+                                        layout="ColumnLayout">
+                                        <Label text="First Name" required="true"/>
+                                        <Input value="{/CashOnDelivery/FirstName}" liveChange="checkCashOnDeliveryStep"
+                                            valueLiveUpdate="true"/>
+                                        <Label text="Last Name"/>
+                                        <Input value="{/CashOnDelivery/LastName}"/>
+                                        <Label text="Phone Number"/>
+                                        <Input value="{/CashOnDelivery/Phone Number}"/>
+                                        <Label text="Email address"/>
+                                        <Input value="{/CashOnDelivery/Email}"/>
+                                    </form:SimpleForm>
+                                </WizardStep>
+                            </Wizard>
+                        </f:content>
+                    </f:DynamicPage>
+                </pages>
+            </NavContainer>
         </content>
     </Page>
 </mvc:View>
