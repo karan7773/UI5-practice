@@ -16,6 +16,7 @@ sap.ui.define([
         return Controller.extend("ns.buinessparter.controller.Suppliers", {
             formatter: formatter,
             onInit: function () {
+                this._iVisibleRowIndex=1;
                 this.oModel = new JSONModel({
                     child1: true,
                     child2: false,
@@ -267,8 +268,15 @@ sap.ui.define([
                 //         break;
                 // }
             },
-            getPage: function () {
-                return this.byId("y");
+            click: function() {
+                var oTable = this.getView().byId("table2");
+                var oItems = oTable.getItems();
+                var iTotalItems = oItems.length;
+                if (this._iVisibleRowIndex < iTotalItems) {
+                    var oCurrentItem = oItems[this._iVisibleRowIndex];
+                    oCurrentItem.setVisible(true);
+                    this._iVisibleRowIndex++;
+                }
             },
         });
     });

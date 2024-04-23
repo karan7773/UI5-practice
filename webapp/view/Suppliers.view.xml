@@ -904,5 +904,32 @@
                 </pages>
             </NavContainer>
         </content>
+
+        <!-- Table -->
+        <Table id="table2" items="{path:'datas>/books'}">
+            <columns>
+                <Column >
+                    <Text text="Title"></Text>
+                </Column>
+                <Column >
+                    <Text text="Author"></Text>
+                </Column>
+                <Column >
+                    <Text text="Genre"></Text>
+                </Column>
+            </columns>
+            <items>
+                <ColumnListItem visible="{= ${datas>title} === ${datas>/books/0/title} ? true : false }">
+                    <cells>
+                        <Text text="{datas>title}"></Text>
+                        <Text text="{datas>author}"></Text>
+                        <Text text="{datas>genre}"></Text>
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+        <Button text="Press" press="click"></Button>
+
+        
     </Page>
 </mvc:View>
