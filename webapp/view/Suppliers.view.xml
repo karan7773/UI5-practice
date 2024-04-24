@@ -906,7 +906,7 @@
         </content>
 
         <!-- Table -->
-        <Table id="table2" items="{path:'datas>/books'}">
+        <Table id="table2" items="{path:'datas>/books'}" >
             <columns>
                 <Column >
                     <Text text="Title"></Text>
@@ -919,7 +919,7 @@
                 </Column>
             </columns>
             <items>
-                <ColumnListItem visible="{= ${datas>title} === ${datas>/books/0/title} ? true : false }">
+                <ColumnListItem visible="{= ${datas>title} === ${datas>/books/0/title} ? true : false }" type="Active" selected="true">
                     <cells>
                         <Text text="{datas>title}"></Text>
                         <Text text="{datas>author}"></Text>
@@ -928,7 +928,7 @@
                 </ColumnListItem>
             </items>
         </Table>
-        <Button text="Press" press="click"></Button>
+        <Button text="Press" id="tb" press="click"></Button>
 
         
     </Page>

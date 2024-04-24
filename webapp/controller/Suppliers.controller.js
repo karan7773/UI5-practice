@@ -273,10 +273,17 @@ sap.ui.define([
                 var oItems = oTable.getItems();
                 var iTotalItems = oItems.length;
                 if (this._iVisibleRowIndex < iTotalItems) {
+                    var prev=oItems[this._iVisibleRowIndex-1];
+                    prev.setType("Inactive");
+                    prev.addStyleClass("blur");
                     var oCurrentItem = oItems[this._iVisibleRowIndex];
                     oCurrentItem.setVisible(true);
                     this._iVisibleRowIndex++;
                 }
+                if(this._iVisibleRowIndex===iTotalItems){
+                    this.getView().byId("tb").setVisible(false)
+                }
             },
+            
         });
     });
