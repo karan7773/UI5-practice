@@ -285,7 +285,7 @@
         <!-- Panel -->
         <content>
             <Title text="Panel" width="100%" ></Title>
-            <Panel expandable="true" headerText="Monitor" width="auto">
+            <Panel expandable="true" headerText="Monitor" width="20%">
                 <content>
                     <Text text="Lorem ipsum dolor st amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor 
                     invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo
@@ -296,15 +296,15 @@
                     <Image src="https://images.gizbot.com/webp/img/2023/07/apple-mac-studio-display-smart-02-1688387922.jpg" width="150px"></Image>
                 </content>
             </Panel>
-            <Panel expandable="true" expanded="true" width="auto">
-                <headerToolbar>
+            <Panel expandable="true" expanded="true" width="20%">
+                <headerToolbar >
                     <OverflowToolbar>
                         <Title text="Ipad"></Title>
                         <ToolbarSpacer/>
                         <Button icon="sap-icon://edit"></Button>
                     </OverflowToolbar>
                 </headerToolbar>
-                <content>
+                <content >
                     <Text text="The iPad is a touchscreen tablet PC made by Apple. The original iPad debuted in 2010. Apple 
                     has four iPad product lines: iPad, iPad mini, iPad Air and iPad Pro. All models are available in a variety 
                     of colors. They run Apple iPadOS mobile operating system (OS) and have Wi-Fi and Bluetooth connectivity. 
@@ -406,34 +406,77 @@
         <!-- Tab container -->
         <content>
             <Title text="Tab Container" width="100%" ></Title>
-            <main:TabContainer>
+            <main:TabContainer height="500px">
+
                 <main:Tab text="Section 1">
-                    <Title text="Section 1" level="H2"/>    
+                    <Title text="Section 1" level="H2"/> 
+                       
                 </main:Tab>
+
                 <main:Tab text="Section 2">
-                    <Title text="Section 2" level="H2"/>    
+                    <Title text="Section 2" level="H2"/>
+                    <Table 
+                        items="{
+                            path:'data>/books'
+                        }">
+                        <columns>
+                            <Column>
+                                <Text text="title"/>
+                            </Column>
+                            <Column>
+                                <Text text="author"/>
+                            </Column>
+                            <Column>
+                                <Text text="genre"/>
+                            </Column>
+                        </columns>
+                        <items>
+                            <ColumnListItem >
+                                <cells>
+                                    <Text text="{data>title}"></Text>
+                                    <Text text="{data>author}"></Text>
+                                    <Text text="{data>genre}"></Text>
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>    
                 </main:Tab>
+
                 <main:Tab text="Section 3">
                     <Title text="Section 3" level="H2"/>    
                 </main:Tab>
+
                 <main:Tab text="Section 4">
-                    <Title text="Section 4" level="H2"/>    
+                    <Title text="Section 4" level="H2"/>
+                    <SegmentedButton width="35%">
+                        <items>
+                            <SegmentedButtonItem text="Home" icon="sap-icon://home" />
+                            <SegmentedButtonItem text="Contact" icon="sap-icon://contacts" />
+                            <SegmentedButtonItem text="User" icon="sap-icon://person-placeholder" />
+                        </items>
+                    </SegmentedButton>
                 </main:Tab>
+                
                 <main:Tab text="Section 5">
-                    <Title text="Section 5" level="H2"/>    
+                    <Title text="Section 5" level="H2"/> 
                 </main:Tab>
+                
                 <main:Tab text="Section 6">
                     <Title text="Section 6" level="H2"/>    
                 </main:Tab>
+                
                 <main:Tab text="Section 7">
                     <Title text="Section 7" level="H2"/>    
                 </main:Tab>
+                
                 <main:Tab text="Section 8">
                     <Title text="Section 8" level="H2"/>    
                 </main:Tab>
+                
                 <main:Tab text="Section 9">
                     <Title text="Section 9" level="H2"/>    
                 </main:Tab>
+                
                 <main:Tab text="Section 10">
                     <Title text="Section 10" level="H2"/>    
                 </main:Tab>
@@ -905,31 +948,71 @@
             </NavContainer>
         </content>
 
-        <!-- Table -->
-        <Table id="table2" items="{path:'datas>/books'}" >
-            <columns>
-                <Column >
-                    <Text text="Title"></Text>
-                </Column>
-                <Column >
-                    <Text text="Author"></Text>
-                </Column>
-                <Column >
-                    <Text text="Genre"></Text>
-                </Column>
-            </columns>
-            <items>
-                <ColumnListItem visible="{= ${datas>title} === ${datas>/books/0/title} ? true : false }" type="Active" selected="true">
-                    <cells>
-                        <Text text="{datas>title}"></Text>
-                        <Text text="{datas>author}"></Text>
-                        <Text text="{datas>genre}"></Text>
-                    </cells>
-                </ColumnListItem>
-            </items>
-        </Table>
-        <Button text="Press" id="tb" press="click"></Button>
-
+        <!-- Table row nxt -->
+        <content>
+            <Table id="table2" items="{path:'datas>/books'}" >
+                <columns>
+                    <Column >
+                        <Text text="Title"></Text>
+                    </Column>
+                    <Column >
+                        <Text text="Author"></Text>
+                    </Column>
+                    <Column >
+                        <Text text="Genre"></Text>
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem visible="{= ${datas>title} === ${datas>/books/0/title} ? true : false }" type="Active" selected="true">
+                        <cells>
+                            <Text text="{datas>title}"></Text>
+                            <Text text="{datas>author}"></Text>
+                            <Text text="{datas>genre}"></Text>
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+            <Button text="Press" id="tb" press="click"></Button>
+        </content>
         
+        <!-- Table download as Pdf -->
+        <content>
+            <Table 
+                items="{
+                    path:'data>/books'
+                }"
+                mode="MultiSelect"
+                id="tbs"
+            >
+                <headerToolbar>  
+                    <Toolbar>  
+                        <Title level="H2" text="PDF Table"/>  
+                            <ToolbarSpacer></ToolbarSpacer>  
+                            <Button icon="sap-icon://download" press="onDataExportPDF" />  
+                    </Toolbar>  
+                </headerToolbar>
+                <columns>
+                    <Column>
+                        <Text text="title"/>
+                    </Column>
+                    <Column>
+                        <Text text="author"/>
+                    </Column>
+                    <Column>
+                        <Text text="genre"/>
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem >
+                        <cells>
+                            <Text text="{data>title}"></Text>
+                            <Text text="{data>author}"></Text>
+                            <Text text="{data>genre}"></Text>
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </content>
+
     </Page>
 </mvc:View>

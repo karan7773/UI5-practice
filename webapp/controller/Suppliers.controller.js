@@ -5,7 +5,7 @@ sap.ui.define([
     "sap/ui/model/Filter",
     "sap/ui/model/FilterOperator",
     "ns/buinessparter/model/formatter",
-	"sap/ui/model/json/JSONModel"
+	"sap/ui/model/json/JSONModel",
 ],
     /**
      * @param {typeof sap.ui.core.mvc.Controller} Controller
@@ -284,6 +284,34 @@ sap.ui.define([
                     this.getView().byId("tb").setVisible(false)
                 }
             },
+            onDataExportPDF: async function() {
+                var rows = [];
+                var aItems = this.getView().byId("tbs").getSelectedItems();
+            
+                aItems.forEach(item => {
+                    var oContext = item.getBindingContext("data");
+                    var oData = oContext ? oContext.getObject() : null;
+                    if (oData) {
+                        rows.push({
+                            title: oData.title,
+                            author: oData.author,
+                            genre: oData.genre
+                        });
+                    }
+                });
+            
+                if (rows.length === 0) {
+                    console.error("No valid data selected for export.");
+                    return;
+                }
+
+                const XLSX = await import("https://cdn.sheetjs.com/xlsx-0.20.2/package/xlsx.mjs");
+            
+                var wrkshet = XLSX.utils.json_to_sheet(rows);
+                var wrkbk = XLSX.utils.book_new();
+                XLSX.utils.book_append_sheet(wrkbk, wrkshet, "Book excel");
+                XLSX.writeFile(wrkbk, "Book Data.xlsx", { compression: true });
+            }
             
         });
     });
