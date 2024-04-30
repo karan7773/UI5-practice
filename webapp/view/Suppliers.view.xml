@@ -13,6 +13,7 @@
     xmlns:fb="sap.ui.comp.filterbar"
     xmlns:f="sap.f"
     xmlns:grid="sap.ui.layout.cssgrid"
+    xmlns:t="sap.ui.table"
     controllerName="ns.buinessparter.controller.Suppliers" 
     displayBlock="true"
 >
@@ -986,7 +987,7 @@
             >
                 <headerToolbar>  
                     <Toolbar>  
-                        <Title level="H2" text="PDF Table"/>  
+                        <Title level="H2" text="Table - Excel"/>  
                             <ToolbarSpacer></ToolbarSpacer>  
                             <Button icon="sap-icon://download" press="onDataExportPDF" />  
                     </Toolbar>  
@@ -1012,6 +1013,13 @@
                     </ColumnListItem>
                 </items>
             </Table>
+        </content>
+
+        <!-- Table dynamic columns -->
+        <content>
+            <t:Table id="myTable" selectionMode="None">
+                <!-- Columns will be added dynamically here -->
+            </t:Table>
         </content>
 
     </Page>

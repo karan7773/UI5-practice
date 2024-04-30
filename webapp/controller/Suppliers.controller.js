@@ -22,6 +22,7 @@ sap.ui.define([
                     child2: false,
                     child3: true
                 });
+                // this.onDataReceived()
             },
             onShowHello() {
                 MessageToast.show("Manage Activity is Pressed");
@@ -283,6 +284,7 @@ sap.ui.define([
                 if(this._iVisibleRowIndex===iTotalItems){
                     this.getView().byId("tb").setVisible(false)
                 }
+                this.onDataReceived()
             },
             onDataExportPDF: async function() {
                 var rows = [];
@@ -311,7 +313,48 @@ sap.ui.define([
                 var wrkbk = XLSX.utils.book_new();
                 XLSX.utils.book_append_sheet(wrkbk, wrkshet, "Book excel");
                 XLSX.writeFile(wrkbk, "Book Data.xlsx", { compression: true });
-            }
+            },
+            onDataReceived: function() {
+                var oTable = this.getView().byId("myTable");
+                
+                // Retrieve the "books" JSON array from the current view's model
+                var aBooks = this.getView().getModel("datas").getProperty("/books");
+            
+                // Retrieve the property names from the first item in the array
+                var oFirstBook = aBooks[0];
+                var aColumnProperties = Object.keys(oFirstBook);
+            
+                // Define the columns for the table based on the property names
+                var oColumns = [];
+                aColumnProperties.forEach(function(property) {
+                    oColumns.push({
+                        label: property.charAt(0).toUpperCase() + property.slice(1), // Capitalize the first letter
+                        property: property
+                    });
+                });
+            
+                // Clear existing columns
+                oTable.removeAllColumns();
+                
+                // Add new columns
+                oColumns.forEach(function(column) {
+                    var oColumn = new sap.ui.table.Column({
+                        label: new sap.m.Text({ text: column.label }),
+                        template: new sap.m.Text({ text: "{" + column.property + "}" })
+                    });
+                    oTable.addColumn(oColumn);
+                });
+            
+                // Create a JSON model for the books data
+                var oModel = new sap.ui.model.json.JSONModel();
+                oModel.setData({ books: aBooks });
+            
+                // Set the model for the table
+                oTable.setModel(oModel);
+            
+                // Bind the rows of the table to the "/books" path of the model
+                oTable.bindRows("/books");
+            },
             
         });
     });
