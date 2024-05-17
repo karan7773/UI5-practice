@@ -1022,5 +1022,188 @@
             </t:Table>
         </content>
 
+        <!-- table dashboard -->
+        <content>
+            <Title text="table dashboard" width="100%" ></Title>
+            <VBox class="sapUiSmallMargin">
+                <Table inset="false">
+                    <columns class="b">
+                        <Column width="50px" >
+                            <Text  text="Metric" />
+                        </Column>
+                        <Column width="100px">
+                            <Text text="Target" />
+                        </Column>
+                        <Column>
+                            <Text text="Day" />
+                        </Column>
+                        <Column>
+                            <Text text="Week" />
+                        </Column>
+                        <Column>
+                            <Text text="Month" />
+                        </Column>
+                        <Column>
+                            <Text text="Year" />
+                        </Column>
+                    </columns>
+                    <items>
+                        <!-- OEE Row -->
+                        <ColumnListItem class="b">
+                            <cells>
+                                <VBox class="m" width="100%">
+                                    <Text  text="OEE" />
+                                </VBox>
+                                <VBox>
+                                    <Text text="100%" />
+                                </VBox>
+                                <VBox>
+                                    <GenericTile class="g" header="118" width="100%" subheader="Day" frameType="OneByOne">
+                                        <TileContent>
+                                            <NumericContent value="118" icon="sap-icon://accept" />
+                                        </TileContent>
+                                    </GenericTile>
+                                </VBox>
+                                <VBox>
+                                    <GenericTile class="g" header="96" width="100%" subheader="Week" frameType="OneByOne">
+                                        <TileContent>
+                                            <NumericContent value="96" icon="sap-icon://accept" />
+                                        </TileContent>
+                                    </GenericTile>
+                                </VBox>
+                                <VBox>
+                                    <GenericTile class="g" header="100" width="100%" subheader="Month" frameType="OneByOne">
+                                        <TileContent>
+                                            <NumericContent value="100" icon="sap-icon://accept" />
+                                        </TileContent>
+                                    </GenericTile>
+                                </VBox>
+                                <VBox>
+                                    <GenericTile class="g" header="74" width="100%" subheader="Year" frameType="OneByOne">
+                                        <TileContent>
+                                            <NumericContent value="74" icon="sap-icon://accept" />
+                                        </TileContent>
+                                    </GenericTile>
+                                </VBox>
+                            </cells>
+                        </ColumnListItem>
+                        
+                        <!-- COPQ Row -->
+                        <ColumnListItem class="b">
+                            <cells>
+                                <VBox class="m" width="100%">
+                                    <Text text="COPQ" />
+                                </VBox>
+                                <VBox>
+                                    <Text text="0%" />
+                                </VBox>
+                                <VBox>
+                                    <GenericTile class="g" header="1.50" width="100%" subheader="Day" frameType="OneByOne">
+                                        <TileContent>
+                                            <NumericContent value="1.50" icon="sap-icon://accept" />
+                                        </TileContent>
+                                    </GenericTile>
+                                </VBox>
+                                <VBox>
+                                    <GenericTile class="g" header="0.76" width="100%" subheader="Week" frameType="OneByOne">
+                                        <TileContent>
+                                            <NumericContent value="0.76" icon="sap-icon://accept" />
+                                        </TileContent>
+                                    </GenericTile>
+                                </VBox>
+                                <VBox>
+                                    <GenericTile class="g" header="0.47" width="100%" subheader="Month" frameType="OneByOne">
+                                        <TileContent>
+                                            <NumericContent value="0.47" icon="sap-icon://accept" />
+                                        </TileContent>
+                                    </GenericTile>
+                                </VBox>
+                            </cells>
+                        </ColumnListItem>
+                        
+                        <!-- Yield Row -->
+                        <ColumnListItem class="b">
+                            <cells>
+                                <VBox class="m" width="100%">
+                                    <Text text="Yield" />
+                                </VBox>
+                                <VBox>
+                                    <Text text="100%" />
+                                </VBox>
+                                <VBox>
+                                    <GenericTile class="g" header="85" width="100%" subheader="Day" frameType="OneByOne">
+                                        <TileContent>
+                                            <NumericContent value="85" icon="sap-icon://accept" />
+                                        </TileContent>
+                                    </GenericTile>
+                                </VBox>
+                                <VBox>
+                                    <GenericTile class="g" header="85" width="100%" subheader="Week" frameType="OneByOne">
+                                        <TileContent>
+                                            <NumericContent value="85" icon="sap-icon://accept" />
+                                        </TileContent>
+                                    </GenericTile>
+                                </VBox>
+                                <VBox>
+                                    <GenericTile class="g" header="85" width="100%" subheader="Month" frameType="OneByOne">
+                                        <TileContent>
+                                            <NumericContent value="85" icon="sap-icon://accept" />
+                                        </TileContent>
+                                    </GenericTile>
+                                </VBox>
+                                <VBox>
+                                    <GenericTile class="g" header="85" width="100%" subheader="Year" frameType="OneByOne">
+                                        <TileContent>
+                                            <NumericContent value="85" icon="sap-icon://accept" />
+                                        </TileContent>
+                                    </GenericTile>
+                                </VBox>
+                            </cells>
+                        </ColumnListItem>
+                        
+                        <!-- Conversion Cost Row -->
+                        <ColumnListItem class="b">
+                            <cells>
+                                <VBox class="m b">
+                                    <Text  text="Conversion Cost" />
+                                </VBox>
+                                <VBox>
+                                    <Text text="Rs 28" />
+                                </VBox>
+                                <VBox>
+                                    <GenericTile class="g" header="85" width="100%" subheader="Day" frameType="OneByOne">
+                                        <TileContent>
+                                            <NumericContent value="85" icon="sap-icon://accept" />
+                                        </TileContent>
+                                    </GenericTile>
+                                </VBox>
+                                <VBox>
+                                    <GenericTile class="g" header="85" width="100%" subheader="Week" frameType="OneByOne">
+                                        <TileContent>
+                                            <NumericContent value="85" icon="sap-icon://accept" />
+                                        </TileContent>
+                                    </GenericTile>
+                                </VBox>
+                                <VBox>
+                                    <GenericTile class="g" header="85" width="100%" subheader="Month" frameType="OneByOne">
+                                        <TileContent>
+                                            <NumericContent value="85" icon="sap-icon://accept" />
+                                        </TileContent>
+                                    </GenericTile>
+                                </VBox>
+                                <VBox>
+                                    <GenericTile class="g" header="85" width="100%" subheader="Year" frameType="OneByOne">
+                                        <TileContent>
+                                            <NumericContent value="85" icon="sap-icon://accept" />
+                                        </TileContent>
+                                    </GenericTile>
+                                </VBox>
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+            </VBox>
+            
+        </content>
     </Page>
 </mvc:View>
