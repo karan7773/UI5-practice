@@ -1,0 +1,101 @@
+<mvc:View 
+    xmlns:mvc="sap.ui.core.mvc" 
+    xmlns="sap.m" 
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:f="sap.f"
+    xmlns:core="sap.ui.core" 
+    controllerName="ns.buinessparter.controller.OEEdashboard" 
+    displayBlock="true"
+>
+    <Page>
+        <content>
+            <Title text="OEE Dashboard"></Title>
+            <f:DynamicPage class="fd">
+                <f:header>
+                    <f:DynamicPageHeader class="fb">
+                        <f:content>
+                            <fb:FilterBar id="filterbar"  useToolbar="false">
+                                <fb:filterGroupItems>
+                                    <fb:FilterGroupItem groupName="Group1" label="Title" name="title" visibleInFilterBar="true">
+                                        <fb:control>
+                                            <MultiComboBox 
+                                                id="s1"
+                                                selectionChange=".onSelectionChange1" 
+                                                name="title"
+                                                items="{
+                                                    path:'data>/books'
+                                                }"
+                                            >
+                                                <core:Item key="{data>title}" text="{data>title}"></core:Item>
+                                            </MultiComboBox>
+                                        </fb:control>
+                                    </fb:FilterGroupItem>
+
+                                    <fb:FilterGroupItem groupName="Group1" label="Author" name="author" visibleInFilterBar="true">
+                                        <fb:control>
+                                            <MultiComboBox 
+                                                id="s2"
+                                                selectionChange=".onSelectionChange2" 
+                                                name="author"
+                                                items="{
+                                                    path:'data>/books'
+                                                }"
+                                            >
+                                            <core:Item key="{data>author}"  text="{data>author}"/>
+                                            </MultiComboBox>
+                                        </fb:control>
+                                    </fb:FilterGroupItem>
+
+                                    <fb:FilterGroupItem groupName="Group1" label="Genre" name="genre" visibleInFilterBar="true"> 
+                                        <fb:control>
+                                            <MultiComboBox 
+                                                id="s3"
+                                                name="genre"
+                                                selectionChange=".onSelectionChange3"
+                                                items="{
+                                                    path:'data>/books'
+                                                }"    
+                                            >
+                                                <core:Item key="{data>genre}" text="{data>genre}"></core:Item>
+                                            </MultiComboBox>
+                                        </fb:control>
+                                    </fb:FilterGroupItem>
+                                </fb:filterGroupItems>
+                            </fb:FilterBar>
+                        </f:content>
+                    </f:DynamicPageHeader>
+                </f:header>
+                <f:content>
+                    <Table 
+                        id="table"
+                        items="{
+                            path:'data>/books'
+                        }"
+                        width="50%"
+                    >
+                        <columns>
+                            <Column>
+                                <Text text="title"/>
+                            </Column>
+                            <Column>
+                                <Text text="author"/>
+                            </Column>
+                            <Column>
+                                <Text text="genre"/>
+                            </Column>
+                        </columns>
+                        <items>
+                            <ColumnListItem >
+                                <cells>
+                                    <Text text="{data>title}"></Text>
+                                    <Text text="{data>author}"></Text>
+                                    <Text text="{data>genre}"></Text>
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                </f:content>
+            </f:DynamicPage>
+        </content>
+    </Page>
+</mvc:View>

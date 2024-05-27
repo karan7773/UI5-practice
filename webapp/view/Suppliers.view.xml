@@ -1028,8 +1028,8 @@
             <VBox class="sapUiSmallMargin">
                 <Table inset="false">
                     <columns class="b">
-                        <Column width="50px" >
-                            <Text  text="Metric" />
+                        <Column width="100px" >
+                            <Text text="Metric" />
                         </Column>
                         <Column width="100px">
                             <Text text="Target" />
@@ -1058,28 +1058,28 @@
                                     <Text text="100%" />
                                 </VBox>
                                 <VBox>
-                                    <GenericTile class="g" header="118" width="100%" subheader="Day" frameType="OneByOne">
+                                    <GenericTile class="g" press="open" header="118" width="100%" subheader="Day" frameType="OneByOne">
                                         <TileContent>
                                             <NumericContent value="118" icon="sap-icon://accept" />
                                         </TileContent>
                                     </GenericTile>
                                 </VBox>
                                 <VBox>
-                                    <GenericTile class="g" header="96" width="100%" subheader="Week" frameType="OneByOne">
+                                    <GenericTile class="g" press="open" header="96" width="100%" subheader="Week" frameType="OneByOne">
                                         <TileContent>
                                             <NumericContent value="96" icon="sap-icon://accept" />
                                         </TileContent>
                                     </GenericTile>
                                 </VBox>
                                 <VBox>
-                                    <GenericTile class="g" header="100" width="100%" subheader="Month" frameType="OneByOne">
+                                    <GenericTile class="g" press="open" header="100" width="100%" subheader="Month" frameType="OneByOne">
                                         <TileContent>
                                             <NumericContent value="100" icon="sap-icon://accept" />
                                         </TileContent>
                                     </GenericTile>
                                 </VBox>
                                 <VBox>
-                                    <GenericTile class="g" header="74" width="100%" subheader="Year" frameType="OneByOne">
+                                    <GenericTile class="g" press="open" header="74" width="100%" subheader="Year" frameType="OneByOne">
                                         <TileContent>
                                             <NumericContent value="74" icon="sap-icon://accept" />
                                         </TileContent>

@@ -129,6 +129,13 @@
           "target":[
             "SplitApp"
           ]
+        },
+        {
+          "pattern": "OEEdashboard",
+          "name": "OEEdashboard",
+          "target":[
+            "OEEdashboard"
+          ]
         }
       ],
       "targets": {
@@ -159,6 +166,13 @@
           "clearControlAggregation": false,
           "viewId": "SplitApp",
           "viewName": "SplitApp"
+        },
+        "OEEdashboard":{
+          "viewType": "XML",
+          "transition":"slide",
+          "clearControlAggregation": false,
+          "viewId": "OEEdashboard",
+          "viewName": "OEEdashboard"
         }
       }
     },

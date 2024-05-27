@@ -26,6 +26,7 @@ sap.ui.define([
             },
             onShowHello() {
                 MessageToast.show("Manage Activity is Pressed");
+                window.open("https://sapui5.hana.ondemand.com/", "_blank");
             },
             handleLiveChange:function(oevent){
                 console.log(oevent);
@@ -355,6 +356,10 @@ sap.ui.define([
                 // Bind the rows of the table to the "/books" path of the model
                 oTable.bindRows("/books");
             },
-            
+            open:function(){
+                const oRouter=this.getOwnerComponent().getRouter()
+                oRouter.navTo("OEEdashboard")
+                window.open("https://sapui5.hana.ondemand.com/", "_blank");
+            }
         });
     });
