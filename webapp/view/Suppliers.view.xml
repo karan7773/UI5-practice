@@ -976,20 +976,19 @@
             <Button text="Press" id="tb" press="click"></Button>
         </content>
         
-        <!-- Table download as Pdf -->
+        <!-- Table download as excel -->
         <content>
             <Table 
                 items="{
                     path:'data>/books'
                 }"
-                mode="MultiSelect"
                 id="tbs"
             >
                 <headerToolbar>  
                     <Toolbar>  
                         <Title level="H2" text="Table - Excel"/>  
                             <ToolbarSpacer></ToolbarSpacer>  
-                            <Button icon="sap-icon://download" press="onDataExportPDF" />  
+                            <Button icon="sap-icon://download" press="onDataExportXLSX" />  
                     </Toolbar>  
                 </headerToolbar>
                 <columns>

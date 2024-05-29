@@ -359,7 +359,25 @@ sap.ui.define([
             open:function(){
                 const oRouter=this.getOwnerComponent().getRouter()
                 oRouter.navTo("OEEdashboard")
-                window.open("https://sapui5.hana.ondemand.com/", "_blank");
+                // window.open("https://sapui5.hana.ondemand.com/", "_blank");
+            },
+            onDataExportXLSX: async function() {
+                var oTable = this.getView().byId("tbs");
+                var aColumns = oTable.getColumns();
+                if (aColumns.length === 0) {
+                    console.error("No columns available for export.");
+                    return;
+                }
+                var headers = aColumns.map(column => column.getHeader().getText());
+                var rows = [headers];
+                const XLSX = await import("https://cdn.sheetjs.com/xlsx-0.20.2/package/xlsx.mjs");
+                var wrkshet = XLSX.utils.aoa_to_sheet(rows);
+                var wrkbk = XLSX.utils.book_new();
+                XLSX.utils.book_append_sheet(wrkbk, wrkshet, "Book excel");
+                XLSX.writeFile(wrkbk, "Book Data.xlsx", { compression: true });
             }
+            
+            
+            
         });
     });
