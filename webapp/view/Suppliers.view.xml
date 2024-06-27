@@ -1204,5 +1204,35 @@
             </VBox>
             
         </content>
+
+        <content>
+            <Table 
+                id="tables"
+                items="{
+                    path:'data>/books'
+                }">
+                <columns>
+                    <Column>
+                        <Text text="title"/>
+                    </Column>
+                    <Column>
+                        <Text text="author"/>
+                    </Column>
+                    <Column>
+                        <Text text="genre"/>
+                    </Column>
+                </columns>
+                <items >
+                    <ColumnListItem >
+                        <cells id="datas">
+                            <Text text="{data>title}"></Text>
+                            <Text text="{data>author}"></Text>
+                            <Text text="{data>genre}"></Text>
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+            <Button press="hide" id="bt" text="click to toggle"/>           
+        </content>
     </Page>
 </mvc:View>

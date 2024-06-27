@@ -71,15 +71,15 @@
           "bundleName": "ns.buinessparter.i18n.i18n"
         }
       },
-      "data":{
+      "data": {
         "type": "sap.ui.model.json.JSONModel",
         "uri": "model/records.json"
       },
-      "datas":{
+      "datas": {
         "type": "sap.ui.model.json.JSONModel",
         "uri": "model/datas.json"
       },
-      "allUsers":{
+      "allUsers": {
         "type": "sap.ui.model.json.JSONModel",
         "uri": "model/users.json"
       }
@@ -112,28 +112,28 @@
         {
           "pattern": "ManageActivity",
           "name": "ManageActivity",
-          "target":[
+          "target": [
             "ManageActivity"
           ]
         },
         {
           "pattern": "User/{userId}",
           "name": "User",
-          "target":[
+          "target": [
             "User"
           ]
         },
         {
           "pattern": "SplitApp",
           "name": "SplitApp",
-          "target":[
+          "target": [
             "SplitApp"
           ]
         },
         {
           "pattern": "OEEdashboard",
           "name": "OEEdashboard",
-          "target":[
+          "target": [
             "OEEdashboard"
           ]
         }
@@ -146,30 +146,30 @@
           "viewId": "Suppliers",
           "viewName": "Suppliers"
         },
-        "ManageActivity":{
+        "ManageActivity": {
           "viewType": "XML",
-          "transition":"slide",
+          "transition": "slide",
           "clearControlAggregation": false,
           "viewId": "ManageActivity",
           "viewName": "ManageActivity"
         },
-        "User":{
+        "User": {
           "viewType": "XML",
-          "transition":"slide",
+          "transition": "slide",
           "clearControlAggregation": false,
           "viewId": "User",
           "viewName": "User"
         },
-        "SplitApp":{
+        "SplitApp": {
           "viewType": "XML",
-          "transition":"slide",
+          "transition": "slide",
           "clearControlAggregation": false,
           "viewId": "SplitApp",
           "viewName": "SplitApp"
         },
-        "OEEdashboard":{
+        "OEEdashboard": {
           "viewType": "XML",
-          "transition":"slide",
+          "transition": "slide",
           "clearControlAggregation": false,
           "viewId": "OEEdashboard",
           "viewName": "OEEdashboard"

@@ -375,8 +375,11 @@ sap.ui.define([
                 var wrkbk = XLSX.utils.book_new();
                 XLSX.utils.book_append_sheet(wrkbk, wrkshet, "Book excel");
                 XLSX.writeFile(wrkbk, "Book Data.xlsx", { compression: true });
+            },
+            hide:function(){
+                var oModel = this.getView().getModel("data"); 
+                oModel.setProperty("/books", []);
             }
-            
             
             
         });
