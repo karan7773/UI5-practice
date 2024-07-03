@@ -277,7 +277,7 @@ sap.ui.define([
                 if (this._iVisibleRowIndex < iTotalItems) {
                     var prev=oItems[this._iVisibleRowIndex-1];
                     prev.setType("Inactive");
-                    prev.addStyleClass("blur");
+                    // prev.addStyleClass("blur");
                     var oCurrentItem = oItems[this._iVisibleRowIndex];
                     oCurrentItem.setVisible(true);
                     this._iVisibleRowIndex++;
@@ -285,7 +285,28 @@ sap.ui.define([
                 if(this._iVisibleRowIndex===iTotalItems){
                     this.getView().byId("tb").setVisible(false)
                 }
-                this.onDataReceived()
+                this.onDataReceived();
+                /*ar oItems = oTable.getItems();
+                var iTotalItems = oItems.length;
+                console.log(iTotalItems);
+   
+                // Hide all rows
+                oItems.forEach(function(oItem) {
+                    oItem.setVisible(false);
+                });
+   
+                // Show the row at the current index
+                if (this._iVisibleRowIndex < iTotalItems) {
+                    var oCurrentItem = oItems[this._iVisibleRowIndex];
+                    oCurrentItem.setVisible(true);
+                    this._iVisibleRowIndex++;
+                }
+                // this._iVisibleRowIndex++;
+                // else {
+                //     // Reset index counter when reaching the end
+                //     this._iVisibleRowIndex = 0;
+                // }
+                 */
             },
             onDataExportPDF: async function() {
                 var rows = [];
