@@ -272,21 +272,21 @@ sap.ui.define([
             },
             click: function() {
                 var oTable = this.getView().byId("table2");
-                var oItems = oTable.getItems();
-                var iTotalItems = oItems.length;
-                if (this._iVisibleRowIndex < iTotalItems) {
-                    var prev=oItems[this._iVisibleRowIndex-1];
-                    prev.setType("Inactive");
-                    // prev.addStyleClass("blur");
-                    var oCurrentItem = oItems[this._iVisibleRowIndex];
-                    oCurrentItem.setVisible(true);
-                    this._iVisibleRowIndex++;
-                }
-                if(this._iVisibleRowIndex===iTotalItems){
-                    this.getView().byId("tb").setVisible(false)
-                }
+                // var oItems = oTable.getItems();
+                // var iTotalItems = oItems.length;
+                // if (this._iVisibleRowIndex < iTotalItems) {
+                //     var prev=oItems[this._iVisibleRowIndex-1];
+                //     prev.setType("Inactive");
+                //     prev.addStyleClass("blur");
+                //     var oCurrentItem = oItems[this._iVisibleRowIndex];
+                //     oCurrentItem.setVisible(true);
+                //     this._iVisibleRowIndex++;
+                // }
+                // if(this._iVisibleRowIndex===iTotalItems){
+                //     this.getView().byId("tb").setVisible(false)
+                // }
                 this.onDataReceived();
-                /*ar oItems = oTable.getItems();
+                var oItems = oTable.getItems();
                 var iTotalItems = oItems.length;
                 console.log(iTotalItems);
    
@@ -302,11 +302,11 @@ sap.ui.define([
                     this._iVisibleRowIndex++;
                 }
                 // this._iVisibleRowIndex++;
-                // else {
-                //     // Reset index counter when reaching the end
-                //     this._iVisibleRowIndex = 0;
-                // }
-                 */
+                else {
+                    // Reset index counter when reaching the end
+                    this._iVisibleRowIndex = 0;
+                }
+                
             },
             onDataExportPDF: async function() {
                 var rows = [];
@@ -400,6 +400,23 @@ sap.ui.define([
             hide:function(){
                 var oModel = this.getView().getModel("data"); 
                 oModel.setProperty("/books", []);
+            },
+            submit_qrdata:function(){
+                var userData=this.byId("user_data")
+                var qrData=this.byId("qr_data")
+                //log and chk input val
+                console.log(userData.getValue(),qrData.getValue());
+                //get the model 
+                var oModel = this.getView().getModel("uqdata");
+                //get the proprty
+                var qudata=oModel.getProperty("/UserQrData");
+                //push the data to the propertty
+                qudata.push({"userdata":userData.getValue(),"qrdata":qrData.getValue()})
+                //then set the property to the model 
+                oModel.setProperty("/UserQrData", qudata);
+                
+                userData.setValue('');
+                qrData.setValue('');
             }
             
             

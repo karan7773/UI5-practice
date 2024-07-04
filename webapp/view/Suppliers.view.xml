@@ -1234,5 +1234,21 @@
             </Table>
             <Button press="hide" id="bt" text="click to toggle"/>           
         </content>
+
+        <content>
+            <Title width="100%" text="enter data"/>
+            <Input width="50%" id="user_data" placeholder="enter the product name" ></Input>
+            <Input width="50%" id="qr_data" placeholder="enter the QR code value" ></Input>  
+            <Button text="Submit" press="submit_qrdata"/>
+            <List 
+                headerText="User datas" headerLevel="H2" 
+                items="{
+                    path:'uqdata>/UserQrData'
+                }">
+                <items>
+                    <StandardListItem title="{uqdata>userdata} and is Qr value {uqdata>qrdata}"  />
+                </items>
+            </List>
+        </content>
     </Page>
 </mvc:View>

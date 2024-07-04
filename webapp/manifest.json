@@ -82,6 +82,10 @@
       "allUsers": {
         "type": "sap.ui.model.json.JSONModel",
         "uri": "model/users.json"
+      },
+      "uqdata":{
+        "type": "sap.ui.model.json.JSONModel",
+        "uri":"model/qrData.json"
       }
     },
     "resources": {
