@@ -417,6 +417,10 @@ sap.ui.define([
                 
                 userData.setValue('');
                 qrData.setValue('');
+            },
+            openPagination:function(){
+                const oRouter=this.getOwnerComponent().getRouter()
+                oRouter.navTo("Pagination")
             }
             
             

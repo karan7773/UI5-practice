@@ -1237,8 +1237,8 @@
 
         <content>
             <Title width="100%" text="enter data"/>
-            <Input width="50%" id="user_data" placeholder="enter the product name" ></Input>
-            <Input width="50%" id="qr_data" placeholder="enter the QR code value" ></Input>  
+            <Input width="30%" id="user_data" placeholder="enter the product name" ></Input>
+            <Input width="30%" id="qr_data" placeholder="enter the QR code value" ></Input>  
             <Button text="Submit" press="submit_qrdata"/>
             <List 
                 headerText="User datas" headerLevel="H2" 
@@ -1246,9 +1246,17 @@
                     path:'uqdata>/UserQrData'
                 }">
                 <items>
-                    <StandardListItem title="{uqdata>userdata} and is Qr value {uqdata>qrdata}"  />
+                    <StandardListItem title="{uqdata>userdata} and is Qr value {uqdata>qrdata}" icon="sap-icon://accept" />
                 </items>
             </List>
+        </content>
+
+        <!-- Pagination -->
+        <content>
+            <Title text="Pagination" width="100%"/>
+            <GenericTile header="Pagination" press="openPagination" >
+                <TileContent footer="App"/>
+            </GenericTile>
         </content>
     </Page>
 </mvc:View>

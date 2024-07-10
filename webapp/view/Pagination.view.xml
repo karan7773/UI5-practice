@@ -1,0 +1,41 @@
+<mvc:View 
+    xmlns:mvc="sap.ui.core.mvc" 
+    xmlns="sap.m" 
+    displayBlock="true"
+    controllerName="ns.buinessparter.controller.Pagination" 
+>
+    <Page >
+        <!-- Pagination -->
+        <content>
+            <Title text="Pagination"/>
+            <Table 
+                id="tablePagi"
+                items="{ path:'/currentPageData' }">
+                <columns>
+                    <Column>
+                        <Text text="Product ID"/>
+                    </Column>
+                    <Column>
+                        <Text text="Product Name"/>
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem >
+                        <cells>
+                            <ObjectIdentifier text="{productId}"/>
+                            <Text text="{productName}"/>
+                        </cells>
+                    </ColumnListItem >
+                </items>  
+            </Table>
+            <OverflowToolbar >
+                <ToolbarSpacer/>
+                <Button id="prevBack" press="previousBack" icon="sap-icon://close-command-field" enabled="{/firstPageBtnEnable}"/>
+                <Button id="prev" press="previous" icon="sap-icon://navigation-left-arrow" enabled="{/firstPageBtnEnable}"/>
+                <Text id="PageTextId" text="Page {/currentPage} of {/totalPages}" />
+                <Button id="next" press="next" icon="sap-icon://navigation-right-arrow" enabled="{/nextPageBtnEnable}"/>
+                <Button id="nextfull" press="nextend" icon="sap-icon://open-command-field" enabled="{/nextPageBtnEnable}"/>
+            </OverflowToolbar>
+        </content>
+    </Page>
+</mvc:View>
