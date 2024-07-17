@@ -1266,7 +1266,6 @@
             <Input 
                 id="inputfield" 
                 placeholder="enter book name" 
-                value="{datas>/selectedBookTitle}"
                 showValueHelp="true" 
                 valueHelpRequest="onValueHelpRequest" 
                 width="35%"
