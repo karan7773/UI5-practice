@@ -6,11 +6,15 @@ sap.ui.define([
     "sap/ui/model/FilterOperator",
     "ns/buinessparter/model/formatter",
 	"sap/ui/model/json/JSONModel",
+    "sap/m/SelectDialog",
+   "sap/m/StandardListItem",
+   "sap/ui/model/Filter",
+   "sap/ui/model/FilterOperator"
 ],
     /**
      * @param {typeof sap.ui.core.mvc.Controller} Controller
      */
-    function (Controller,MessageToast,Fragment,Filter,FilterOperator,formatter,JSONModel) {
+    function (Controller,MessageToast,Fragment,Filter,FilterOperator,formatter,JSONModel,SelectDialog,StandardListItem) {
         "use strict";
 
         return Controller.extend("ns.buinessparter.controller.Suppliers", {
@@ -23,6 +27,7 @@ sap.ui.define([
                     child3: true
                 });
                 // this.onDataReceived()
+                this._oValueHelpDialog = null; 
             },
             onShowHello() {
                 MessageToast.show("Manage Activity is Pressed");
@@ -421,8 +426,39 @@ sap.ui.define([
             openPagination:function(){
                 const oRouter=this.getOwnerComponent().getRouter()
                 oRouter.navTo("Pagination")
+            },
+            onValueHelpRequest:function(oEvent){
+                var oInput=oEvent.getSource()
+                console.log(this._oValueHelpDialog);
+                if (!this._oValueHelpDialog) {
+                    this._oValueHelpDialog = new sap.m.SelectDialog({
+                        title: "Select Value",
+                        items: {
+                            path: 'datas>/books',
+                            template: new sap.m.StandardListItem({
+                                title: "{datas>title}",
+                                description: "{datas>author}"
+                            })
+                        },
+                        search: function(oEvent) {
+                            var sValue = oEvent.getParameter("value");
+                            var oFilter = new Filter("title", FilterOperator.Contains, sValue);
+                            oEvent.getSource().getBinding("items").filter([oFilter]);
+                        },
+                        confirm: function(oEvent) {
+                            var oSelectedItem = oEvent.getParameter("selectedItem");
+                            if (oSelectedItem) {
+                                oInput.setValue(oSelectedItem.getTitle());
+                            }
+                        },
+                        cancel: function() {
+                            oInput.setValue("");
+                        }
+                    });
+                    this._oValueHelpDialog.setModel(this.getView().getModel("datas"), "datas");
+                }
+                this._oValueHelpDialog.open();
             }
-            
             
         });
     });

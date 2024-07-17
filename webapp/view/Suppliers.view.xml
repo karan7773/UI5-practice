@@ -1258,5 +1258,29 @@
                 <TileContent footer="App"/>
             </GenericTile>
         </content>
+
+        <!-- Input field with f4 help -->
+        <content>
+            <Title text="Input field with f4 help" width="100%"/>
+            <!-- {datas>/books} -->
+            <Input 
+                id="inputfield" 
+                placeholder="enter book name" 
+                value="{datas>/selectedBookTitle}"
+                showValueHelp="true" 
+                valueHelpRequest="onValueHelpRequest" 
+                width="35%"
+            />
+            <ComboBox
+            id="comboBox"
+            placeholder="Select a Book"
+            items="{
+                path:'datas>/books'
+            }">
+                <core:Item
+                    key="{datas>author}"
+                    text="{datas>title}" />
+            </ComboBox>
+        </content>
     </Page>
 </mvc:View>

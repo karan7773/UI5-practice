@@ -1,53 +1,242 @@
 {
-    "books": [
-        {
-          "title": "To Kill a Mockingbird",
-          "author": "Harper Lee",
-          "genre": "Fiction",
-          "quantity":34,
-          "Status":"A"
-        },
-        {
-          "title": "Moby-Dick; or, The Whale",
-          "author": "George Orwell",
-          "genre": "Dystopian fiction",
-          "quantity":33,
-          "Status":"B"
-        },
-        {
-          "title": "The Great Gatsby",
-          "author": "F. Scott Fitzgerald",
-          "genre": "Fiction",
-          "quantity":67,
-          "Status":"A"
-        },
-        {
-          "title": "Pride and Prejudice",
-          "author": "Jane Austen",
-          "genre": "Romance",
-          "quantity":45,
-          "Status":"C"
-        },
-        {
-          "title": "The Catcher in the Rye",
-          "author": "J.D. Salinger",
-          "genre": "Coming-of-age fiction",
-          "quantity":9,
-          "Status":"C"
-        },
-        {
-          "title": "Moby-Dick; or, The Whale",
-          "author": "Herman Melville",
-          "genre": "Adventure fiction",
-          "quantity":2,
-          "Status":"A"
-        },
-        {
-          "title": "The Hobbit",
-          "author": "J.R.R. Tolkien",
-          "genre": "Fantasy",
-          "quantity":31,
-          "Status":"B"
-        }
-      ]
+  "books": [
+      {
+        "title": "To Kill a Mockingbird",
+        "author": "Harper Lee",
+        "genre": "Fiction",
+        "quantity": 34,
+        "Status": "A"
+      },
+      {
+        "title": "Moby-Dick; or, The Whale",
+        "author": "George Orwell",
+        "genre": "Dystopian fiction",
+        "quantity": 33,
+        "Status": "B"
+      },
+      {
+        "title": "The Great Gatsby",
+        "author": "F. Scott Fitzgerald",
+        "genre": "Fiction",
+        "quantity": 67,
+        "Status": "A"
+      },
+      {
+        "title": "Pride and Prejudice",
+        "author": "Jane Austen",
+        "genre": "Romance",
+        "quantity": 45,
+        "Status": "C"
+      },
+      {
+        "title": "The Catcher in the Rye",
+        "author": "J.D. Salinger",
+        "genre": "Coming-of-age fiction",
+        "quantity": 9,
+        "Status": "C"
+      },
+      {
+        "title": "Moby-Dick; or, The Whale",
+        "author": "Herman Melville",
+        "genre": "Adventure fiction",
+        "quantity": 2,
+        "Status": "A"
+      },
+      {
+        "title": "The Hobbit",
+        "author": "J.R.R. Tolkien",
+        "genre": "Fantasy",
+        "quantity": 31,
+        "Status": "B"
+      },
+      {
+        "title": "1984",
+        "author": "George Orwell",
+        "genre": "Dystopian fiction",
+        "quantity": 50,
+        "Status": "A"
+      },
+      {
+        "title": "Brave New World",
+        "author": "Aldous Huxley",
+        "genre": "Science fiction",
+        "quantity": 40,
+        "Status": "B"
+      },
+      {
+        "title": "War and Peace",
+        "author": "Leo Tolstoy",
+        "genre": "Historical fiction",
+        "quantity": 12,
+        "Status": "C"
+      },
+      {
+        "title": "Crime and Punishment",
+        "author": "Fyodor Dostoevsky",
+        "genre": "Philosophical fiction",
+        "quantity": 25,
+        "Status": "A"
+      },
+      {
+        "title": "Jane Eyre",
+        "author": "Charlotte Brontë",
+        "genre": "Romance",
+        "quantity": 30,
+        "Status": "B"
+      },
+      {
+        "title": "The Lord of the Rings",
+        "author": "J.R.R. Tolkien",
+        "genre": "Fantasy",
+        "quantity": 40,
+        "Status": "A"
+      },
+      {
+        "title": "The Catch-22",
+        "author": "Joseph Heller",
+        "genre": "Satire",
+        "quantity": 15,
+        "Status": "C"
+      },
+      {
+        "title": "The Grapes of Wrath",
+        "author": "John Steinbeck",
+        "genre": "Historical fiction",
+        "quantity": 22,
+        "Status": "B"
+      },
+      {
+        "title": "The Alchemist",
+        "author": "Paulo Coelho",
+        "genre": "Adventure fiction",
+        "quantity": 28,
+        "Status": "A"
+      },
+      {
+        "title": "Great Expectations",
+        "author": "Charles Dickens",
+        "genre": "Fiction",
+        "quantity": 35,
+        "Status": "B"
+      },
+      {
+        "title": "Animal Farm",
+        "author": "George Orwell",
+        "genre": "Political satire",
+        "quantity": 45,
+        "Status": "A"
+      },
+      {
+        "title": "One Hundred Years of Solitude",
+        "author": "Gabriel Garcia Marquez",
+        "genre": "Magical realism",
+        "quantity": 20,
+        "Status": "C"
+      },
+      {
+        "title": "The Odyssey",
+        "author": "Homer",
+        "genre": "Epic poetry",
+        "quantity": 18,
+        "Status": "B"
+      },
+      {
+        "title": "Ulysses",
+        "author": "James Joyce",
+        "genre": "Modernist literature",
+        "quantity": 12,
+        "Status": "A"
+      },
+      {
+        "title": "The Brothers Karamazov",
+        "author": "Fyodor Dostoevsky",
+        "genre": "Philosophical fiction",
+        "quantity": 16,
+        "Status": "C"
+      },
+      {
+        "title": "Les Misérables",
+        "author": "Victor Hugo",
+        "genre": "Historical fiction",
+        "quantity": 10,
+        "Status": "B"
+      },
+      {
+        "title": "Wuthering Heights",
+        "author": "Emily Brontë",
+        "genre": "Gothic fiction",
+        "quantity": 25,
+        "Status": "A"
+      },
+      {
+        "title": "Anna Karenina",
+        "author": "Leo Tolstoy",
+        "genre": "Realist fiction",
+        "quantity": 14,
+        "Status": "B"
+      },
+      {
+        "title": "The Divine Comedy",
+        "author": "Dante Alighieri",
+        "genre": "Epic poetry",
+        "quantity": 19,
+        "Status": "C"
+      },
+      {
+        "title": "The Picture of Dorian Gray",
+        "author": "Oscar Wilde",
+        "genre": "Philosophical fiction",
+        "quantity": 22,
+        "Status": "A"
+      },
+      {
+        "title": "Frankenstein",
+        "author": "Mary Shelley",
+        "genre": "Gothic fiction",
+        "quantity": 28,
+        "Status": "B"
+      },
+      {
+        "title": "Dracula",
+        "author": "Bram Stoker",
+        "genre": "Horror fiction",
+        "quantity": 20,
+        "Status": "C"
+      },
+      {
+        "title": "The Iliad",
+        "author": "Homer",
+        "genre": "Epic poetry",
+        "quantity": 24,
+        "Status": "B"
+      },
+      {
+        "title": "Don Quixote",
+        "author": "Miguel de Cervantes",
+        "genre": "Satire",
+        "quantity": 30,
+        "Status": "A"
+      },
+      {
+        "title": "Madame Bovary",
+        "author": "Gustave Flaubert",
+        "genre": "Realist fiction",
+        "quantity": 18,
+        "Status": "C"
+      },
+      {
+        "title": "The Count of Monte Cristo",
+        "author": "Alexandre Dumas",
+        "genre": "Adventure fiction",
+        "quantity": 32,
+        "Status": "A"
+      },
+      {
+        "title": "Heart of Darkness",
+        "author": "Joseph Conrad",
+        "genre": "Novella",
+        "quantity": 22,
+        "Status": "B"
+      }
+  ],"selectedBookTitle": ""
 }
