@@ -37,5 +37,28 @@
                 <Button id="nextfull" press="nextend" icon="sap-icon://open-command-field" enabled="{/nextPageBtnEnable}"/>
             </OverflowToolbar>
         </content>
+
+        <!-- table cell with f4 help -->
+        <content>
+            <Title text="Table cell with f4 help" width="100%"/>
+            <Table 
+                id="inputTable"
+            >
+                <columns>
+                    <Column>
+                        <Text text="Title"/>
+                    </Column>
+                    <Column>
+                        <Text text="Author"/>
+                    </Column>
+                    <Column>
+                        <Text text="Genre"/>
+                    </Column>
+                    <Column>
+                        <Text text="Quantity"/>
+                    </Column>
+                </columns>
+            </Table>
+        </content>
     </Page>
 </mvc:View>

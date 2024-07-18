@@ -19,7 +19,7 @@ sap.ui.define([
 
         return Controller.extend("ns.buinessparter.controller.Suppliers", {
             formatter: formatter,
-            onInit: function () {
+            onInit: async function () {
                 this._iVisibleRowIndex=1;
                 this.oModel = new JSONModel({
                     child1: true,
@@ -28,6 +28,12 @@ sap.ui.define([
                 });
                 // this.onDataReceived()
                 this._oValueHelpDialog = null; 
+                // to load the model in onInit()
+                var oModel = this.getOwnerComponent().getModel('datas')
+                // to get property in onInit()
+                var data=await oModel.getProperty('/books')
+                console.log(data);
+                
             },
             onShowHello() {
                 MessageToast.show("Manage Activity is Pressed");
@@ -293,7 +299,7 @@ sap.ui.define([
                 this.onDataReceived();
                 var oItems = oTable.getItems();
                 var iTotalItems = oItems.length;
-                console.log(iTotalItems);
+                // console.log(iTotalItems);
    
                 // Hide all rows
                 oItems.forEach(function(oItem) {
@@ -453,7 +459,8 @@ sap.ui.define([
                         },
                         cancel: function() {
                             oInput.setValue("");
-                        }
+                        },
+                        contentHeight:"200px"
                     });
                     this._oValueHelpDialog.setModel(this.getView().getModel("datas"), "datas");
                 }

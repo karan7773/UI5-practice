@@ -1,7 +1,9 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
-    "sap/ui/model/json/JSONModel"
-], function(Controller,JSONModel) {
+    "sap/ui/model/json/JSONModel",
+    "sap/m/ColumnListItem",
+    "sap/m/Input"
+], function(Controller,JSONModel,ColumnListItem,Input) {
     'use strict';
     return Controller.extend("ns.buinessparter.controller.Pagination", {
         onInit:function(){
@@ -68,6 +70,38 @@ sap.ui.define([
             var oModel=new JSONModel(data)
             this.getView().setModel(oModel)
             this.loadPageData();
+
+            var oTable = this.byId("inputTable");
+            var numRows = 10;
+            var numCols = 4;
+
+            for (var i = 0; i < numRows; i++) {
+                var oRow = new ColumnListItem();
+                var f4Index = Math.floor(Math.random() * numCols);
+                var hasDiagonalF4=false;
+                for (var j = 0; j < numCols; j++) {
+                    var oInput = new Input();
+                    if (i === j) {
+                        oInput.setShowValueHelp(true);
+                        oInput.attachValueHelpRequest(this.onValueHelp.bind(this));
+                        hasDiagonalF4=true;
+                    }
+                    else if (!hasDiagonalF4&& j === f4Index) {
+                        oInput.setShowValueHelp(true);
+                        oInput.attachValueHelpRequest(this.onValueHelp.bind(this));
+                    }
+                    oRow.addCell(oInput);
+                }
+                if (hasDiagonalF4) {
+                    for (var k = 0; k < numCols; k++) {
+                        if (k !== i) {
+                            oRow.getCells()[k].setShowValueHelp(false);
+                            oRow.getCells()[k].detachValueHelpRequest(this.onValueHelp.bind(this));
+                        }
+                    }
+                }
+                oTable.addItem(oRow);
+            }
         },
         loadPageData:function(){
             var oModel=this.getView().getModel()
@@ -111,6 +145,39 @@ sap.ui.define([
         nextend:function(){
             this.currentpg=this.totalPages
             this.loadPageData();
+        },
+        onValueHelp:function(oEvent){
+            var oInput=oEvent.getSource()
+            console.log(this._oValueHelpDialog);
+            if (!this._oValueHelpDialog) {
+                this._oValueHelpDialog = new sap.m.SelectDialog({
+                    title: "Select Value",
+                    items: {
+                        path: 'datas>/currentPageData',
+                        template: new sap.m.StandardListItem({
+                            title: "{datas>productName}",
+                            description: "{datas>productId}"
+                        })
+                    },
+                    search: function(oEvent) {
+                        var sValue = oEvent.getParameter("value");
+                        var oFilter = new Filter("title", FilterOperator.Contains, sValue);
+                        oEvent.getSource().getBinding("items").filter([oFilter]);
+                    },
+                    confirm: function(oEvent) {
+                        var oSelectedItem = oEvent.getParameter("selectedItem");
+                        if (oSelectedItem) {
+                            oInput.setValue(oSelectedItem.getTitle());
+                        }
+                    },
+                    cancel: function() {
+                        oInput.setValue("");
+                    },
+                    contentHeight:"200px"
+                });
+                this._oValueHelpDialog.setModel(this.getModel(), "datas");
+            }
+            this._oValueHelpDialog.open();
         }
     })
     
