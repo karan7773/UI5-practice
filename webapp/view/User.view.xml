@@ -12,6 +12,9 @@
             <Title text="{user>/company}" width="100%" ></Title>
             <Title text="{user>/activity}" width="100%" ></Title>
             <Button text="back" press="back" />
+                <Link id="link" href="https://s4han2020.sap.local:8005/sap/bc/gui/sap/its/webgui?~transaction=VA03" target="_blank">
+                    <Button text="click for tcode"/>
+                </Link>
         </content>
     </Page>
 </mvc:View>

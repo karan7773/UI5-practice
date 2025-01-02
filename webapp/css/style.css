@@ -46,3 +46,12 @@
     flex-direction: row;
     justify-content: center;   
 }
+.customHeader {
+    text-align: center; /* Centers the text inside the label */
+    display: inline-block; /* Ensures proper alignment in header cells */
+    width: 100%; /* Fills the entire header cell for centering */
+}
+
+.sapUiTableColHdr {
+    text-align: center !important;
+}

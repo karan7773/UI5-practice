@@ -17,7 +17,7 @@
     controllerName="ns.buinessparter.controller.Suppliers" 
     displayBlock="true"
 >
-    <Page id="page" title="{i18n>title}">
+    <Page id="pages" title="{i18n>title}">
 
         <!-- Registration Form -->
         <content>
@@ -313,7 +313,8 @@
                     device than a smartphone; however, they don't come with all the features and capabilities of a laptop. 
                     They are easy to use and have Apple's highly optimized hardware and software that the company designs and 
                     updates." />
-                    <Link href="https://www.apple.com/in/ipad/" text="link" target="_blank"></Link>
+                    <Link href="https://www.apple.com/
+                    in/ipad/" text="link" target="_blank"></Link>
                     <Image src="https://idestiny.in/wp-content/uploads/2022/03/ipad-air-select-cell-purple-202203.png" width="150px"></Image>
                 </content>
             </Panel>
@@ -1280,6 +1281,46 @@
                     key="{datas>author}"
                     text="{datas>title}" />
             </ComboBox>
+        </content>
+
+        <!-- column layout table -->
+        <content>
+            <t:Table
+				rows="{datas>/books}"
+				ariaLabelledBy="title">
+                <t:columns>
+                    <t:Column width="11rem" headerSpan="2" hAlign="Center" >
+						<t:multiLabels>
+						    <Text text="Book" />
+						</t:multiLabels>
+						<t:multiLabels>
+						    <Text text="Book Name"/>
+						</t:multiLabels>
+						<t:template>
+							<Text text="{datas>title}" wrapping="false" />
+						</t:template>
+					</t:Column>
+					<t:Column width="11rem"  hAlign="Center">
+						<t:multiLabels>
+						    <Text text="Author"/>
+						</t:multiLabels>
+						<t:multiLabels>
+						    <Text text="Author"/>
+						</t:multiLabels>
+						<t:template>
+							<Text text="{datas>author}" wrapping="false"/>
+						</t:template>
+					</t:Column>
+                    <t:Column width="11rem">
+						<t:multiLabels>
+						    <Text text="Genre"/>
+						</t:multiLabels>
+						<t:template>
+							<Text text="{datas>genre}" wrapping="false"/>
+						</t:template>
+					</t:Column>
+                </t:columns>
+            </t:Table>
         </content>
     </Page>
 </mvc:View>

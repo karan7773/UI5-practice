@@ -9,12 +9,13 @@ sap.ui.define([
     "sap/m/SelectDialog",
    "sap/m/StandardListItem",
    "sap/ui/model/Filter",
-   "sap/ui/model/FilterOperator"
+   "sap/ui/model/FilterOperator",
+   "sap/ui/model/odata/v2/ODataModel"
 ],
     /**
      * @param {typeof sap.ui.core.mvc.Controller} Controller
      */
-    function (Controller,MessageToast,Fragment,Filter,FilterOperator,formatter,JSONModel,SelectDialog,StandardListItem) {
+    function (Controller,MessageToast,Fragment,Filter,FilterOperator,formatter,JSONModel,SelectDialog,StandardListItem,ODataModel) {
         "use strict";
 
         return Controller.extend("ns.buinessparter.controller.Suppliers", {
@@ -32,7 +33,7 @@ sap.ui.define([
                 var oModel = this.getOwnerComponent().getModel('datas')
                 // to get property in onInit()
                 var data=await oModel.getProperty('/books')
-                console.log(data);
+                // console.log(data);
                 
             },
             onShowHello() {
@@ -40,9 +41,9 @@ sap.ui.define([
                 window.open("https://sapui5.hana.ondemand.com/", "_blank");
             },
             handleLiveChange:function(oevent){
-                console.log(oevent);
-                console.log(oevent.mParameters.value);
-                console.log(oevent.getParameters("value"));
+                // console.log(oevent);
+                // console.log(oevent.mParameters.value);
+                // console.log(oevent.getParameters("value"));
                 var val=this.getView().byId("i3").getValue();
                 // console.log(val);
             },
@@ -51,7 +52,7 @@ sap.ui.define([
             },
             getP:function(){
                 var data=this.getView().byId("Col1").getValue();
-                console.log(data);
+                // console.log(data);
             },
             onpress_Toggle:function(oevent){
                 if(oevent.getSource().getPressed()){
@@ -105,10 +106,28 @@ sap.ui.define([
             handleScanError: function(oEvent) {
                 this.byId("scanResultLabel").setText("Error result: " + oEvent.getParameter("message"));
                 this.byId("bsd").close();
+                console.log();
+                
             },
             handleScanSuccess: function(oEvent) {
-                this.byId("scanResultLabel").setText("Success result: " + oEvent.getParameter("text"));
-                this.byId("bsd").close();
+                var ServiceUrl = "http://devsrv.rootssap.com:8000/sap/bc/zsrv_qr_scan";
+                // console.log(oEvent.mParameters.text);
+                var data = oEvent.mParameters.text;
+                if (data) {
+                    $.ajax({
+                        url: ServiceUrl,
+                        method: "POST",
+                        contentType: "application/json",
+                        data: JSON.stringify(data),
+                        success: function(response) {
+                            console.log("Success:", response);
+                        },
+                        error: function(error) {
+                            console.error("Error:", error);
+                        }
+                    });
+                    this.byId("bsd").close();
+                }
             },
             // openDialogFragments(){
             //     if(!this.isDialog){
